@@ -1,0 +1,225 @@
+[2019-11-16 19:29:06,491] [LinqHelper.py:52] [LinqHelper:db_find] [ERROR]- 请求出错：没有找到该用户
+[2019-11-16 19:29:06,492] [basehttp.py:124] [basehttp:log_message] [INFO]- "GET /v1/users/user?id=13 HTTP/1.1" 200 62
+[2019-11-16 19:30:33,416] [LinqHelper.py:52] [LinqHelper:db_find] [ERROR]- 请求出错：没有找到该用户
+[2019-11-16 19:30:33,417] [basehttp.py:124] [basehttp:log_message] [INFO]- "GET /v1/users/user HTTP/1.1" 200 62
+[2019-11-16 19:30:39,669] [basehttp.py:124] [basehttp:log_message] [INFO]- "POST /v1/users/user HTTP/1.1" 200 13
+[2019-11-16 19:35:41,607] [LinqHelper.py:52] [LinqHelper:db_find] [ERROR]- 请求出错：没有找到该用户
+[2019-11-16 19:35:41,608] [basehttp.py:124] [basehttp:log_message] [INFO]- "GET /v1/users/user?id=13 HTTP/1.1" 200 62
+[2019-11-16 19:36:21,333] [LinqHelper.py:55] [LinqHelper:db_find] [ERROR]- 请求出错：没有找到该用户
+[2019-11-16 19:36:21,333] [basehttp.py:124] [basehttp:log_message] [INFO]- "GET /v1/users/user?id=13 HTTP/1.1" 200 62
+[2019-11-16 19:36:33,249] [LinqHelper.py:56] [LinqHelper:db_find] [ERROR]- 请求出错：没有找到该用户
+[2019-11-16 19:36:33,249] [basehttp.py:124] [basehttp:log_message] [INFO]- "GET /v1/users/user?id=13 HTTP/1.1" 200 62
+[2019-11-16 19:37:56,683] [basehttp.py:124] [basehttp:log_message] [INFO]- "GET /admin/ HTTP/1.1" 302 0
+[2019-11-16 19:37:56,784] [basehttp.py:124] [basehttp:log_message] [INFO]- "GET /admin/login/?next=/admin/ HTTP/1.1" 200 1652
+[2019-11-16 19:37:56,889] [basehttp.py:124] [basehttp:log_message] [INFO]- "GET /admin/ HTTP/1.1" 302 0
+[2019-11-16 19:37:56,910] [basehttp.py:124] [basehttp:log_message] [INFO]- "GET /admin/login/?next=/admin/ HTTP/1.1" 200 1652
+[2019-11-16 19:37:57,388] [base.py:152] [base:get_response] [WARNING]- Not Found: /favicon.ico
+[2019-11-16 19:37:57,389] [basehttp.py:124] [basehttp:log_message] [WARNING]- "GET /favicon.ico HTTP/1.1" 404 2297
+[2019-11-16 19:38:02,842] [basehttp.py:124] [basehttp:log_message] [INFO]- "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+[2019-11-16 19:38:02,937] [basehttp.py:124] [basehttp:log_message] [INFO]- "GET /admin/ HTTP/1.1" 200 5697
+[2019-11-16 19:38:05,125] [basehttp.py:124] [basehttp:log_message] [INFO]- "GET /admin/users/tuser/ HTTP/1.1" 200 3055
+[2019-11-16 19:38:05,151] [basehttp.py:124] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7682
+[2019-11-16 19:38:06,703] [basehttp.py:124] [basehttp:log_message] [INFO]- "GET /admin/users/tuser/add/ HTTP/1.1" 200 5343
+[2019-11-16 19:38:06,726] [basehttp.py:124] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7682
+[2019-11-16 19:38:12,568] [basehttp.py:124] [basehttp:log_message] [INFO]- "POST /admin/users/tuser/add/ HTTP/1.1" 302 0
+[2019-11-16 19:38:12,671] [basehttp.py:124] [basehttp:log_message] [INFO]- "GET /admin/users/tuser/ HTTP/1.1" 200 5431
+[2019-11-16 19:38:12,687] [basehttp.py:124] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7682
+[2019-11-16 19:38:16,042] [LinqHelper.py:56] [LinqHelper:db_find] [ERROR]- 请求出错：没有找到该用户
+[2019-11-16 19:38:16,043] [basehttp.py:124] [basehttp:log_message] [INFO]- "GET /v1/users/user?id=13 HTTP/1.1" 200 62
+[2019-11-16 19:38:28,543] [basehttp.py:124] [basehttp:log_message] [INFO]- "GET /v1/users/user?id=1 HTTP/1.1" 200 150
+[2019-11-16 19:46:19,266] [exception.py:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /v1/users/user
+Traceback (most recent call last):
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/tarena/桌面/git/Storage/storage/users/views.py", line 31, in post
+    if not re.match(r"^1[35678]\d{9}$", phone):
+  File "/usr/lib/python3.6/re.py", line 172, in match
+    return _compile(pattern, flags).match(string)
+TypeError: expected string or bytes-like object
+[2019-11-16 19:46:19,358] [basehttp.py:124] [basehttp:log_message] [ERROR]- "POST /v1/users/user HTTP/1.1" 500 85185
+[2019-11-16 19:46:33,148] [exception.py:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /v1/users/user
+Traceback (most recent call last):
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/tarena/桌面/git/Storage/storage/users/views.py", line 31, in post
+    if not re.match(r"^1[35678]\d{9}$", phone):
+  File "/usr/lib/python3.6/re.py", line 172, in match
+    return _compile(pattern, flags).match(string)
+TypeError: expected string or bytes-like object
+[2019-11-16 19:46:33,184] [basehttp.py:124] [basehttp:log_message] [ERROR]- "POST /v1/users/user HTTP/1.1" 500 85185
+[2019-11-16 19:47:07,653] [exception.py:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /v1/users/user
+Traceback (most recent call last):
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/tarena/桌面/git/Storage/storage/users/views.py", line 34, in post
+    if not re.match(r"^1[35678]\d{9}$", phone):
+  File "/usr/lib/python3.6/re.py", line 172, in match
+    return _compile(pattern, flags).match(string)
+TypeError: expected string or bytes-like object
+[2019-11-16 19:47:07,704] [basehttp.py:124] [basehttp:log_message] [ERROR]- "POST /v1/users/user HTTP/1.1" 500 85185
+[2019-11-16 19:47:45,715] [exception.py:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /v1/users/user
+Traceback (most recent call last):
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/tarena/桌面/git/Storage/storage/users/views.py", line 35, in post
+    if not re.match(r"^1[35678]\d{9}$", phone):
+  File "/usr/lib/python3.6/re.py", line 172, in match
+    return _compile(pattern, flags).match(string)
+TypeError: expected string or bytes-like object
+[2019-11-16 19:47:45,762] [basehttp.py:124] [basehttp:log_message] [ERROR]- "POST /v1/users/user HTTP/1.1" 500 85185
+[2019-11-16 19:49:40,270] [exception.py:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /v1/users/user
+Traceback (most recent call last):
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/tarena/桌面/git/Storage/storage/users/views.py", line 38, in post
+    if not re.match(r"^1[35678]\d{9}$", phone):
+  File "/usr/lib/python3.6/re.py", line 172, in match
+    return _compile(pattern, flags).match(string)
+TypeError: expected string or bytes-like object
+[2019-11-16 19:49:40,323] [basehttp.py:124] [basehttp:log_message] [ERROR]- "POST /v1/users/user HTTP/1.1" 500 85400
+[2019-11-16 19:49:55,674] [exception.py:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /v1/users/user
+Traceback (most recent call last):
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/tarena/桌面/git/Storage/storage/users/views.py", line 39, in post
+    if not re.match(r"^1[35678]\d{9}$", phone):
+  File "/usr/lib/python3.6/re.py", line 172, in match
+    return _compile(pattern, flags).match(string)
+TypeError: expected string or bytes-like object
+[2019-11-16 19:49:55,729] [basehttp.py:124] [basehttp:log_message] [ERROR]- "POST /v1/users/user HTTP/1.1" 500 85400
+[2019-11-16 19:50:20,502] [exception.py:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /v1/users/user
+Traceback (most recent call last):
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/tarena/桌面/git/Storage/storage/users/views.py", line 26, in post
+    body = json.loads(request.body)
+  File "/usr/lib/python3.6/json/__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.6/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.6/json/decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+[2019-11-16 19:50:20,576] [basehttp.py:124] [basehttp:log_message] [ERROR]- "POST /v1/users/user HTTP/1.1" 500 96416
+[2019-11-16 19:50:42,725] [exception.py:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /v1/users/user
+Traceback (most recent call last):
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/tarena/桌面/git/Storage/storage/users/views.py", line 27, in post
+    body = json.loads(request.body)
+  File "/usr/lib/python3.6/json/__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.6/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.6/json/decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+[2019-11-16 19:50:42,797] [basehttp.py:124] [basehttp:log_message] [ERROR]- "POST /v1/users/user HTTP/1.1" 500 96417
+[2019-11-16 19:51:47,011] [exception.py:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /v1/users/user
+Traceback (most recent call last):
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tarena/.local/lib/python3.6/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/tarena/桌面/git/Storage/storage/users/views.py", line 34, in post
+    if not re.match(r"^1[35678]\d{9}$", phone):
+  File "/usr/lib/python3.6/re.py", line 172, in match
+    return _compile(pattern, flags).match(string)
+TypeError: expected string or bytes-like object
+[2019-11-16 19:51:47,074] [basehttp.py:124] [basehttp:log_message] [ERROR]- "POST /v1/users/user HTTP/1.1" 500 85516
+[2019-11-16 19:53:01,518] [LinqHelper.py:57] [LinqHelper:db_find] [ERROR]- 请求出错：Cannot resolve keyword 'phone' into field. Choices are: count, created_time, id, login_phone, password, updated_time, vername
+[2019-11-16 19:53:01,523] [basehttp.py:124] [basehttp:log_message] [INFO]- "POST /v1/users/user HTTP/1.1" 200 62
+[2019-11-16 19:55:30,727] [LinqHelper.py:57] [LinqHelper:db_find] [ERROR]- 请求出错：Cannot resolve keyword 'phone' into field. Choices are: created_time, id, login_phone, password, vername
+[2019-11-16 19:55:30,730] [basehttp.py:124] [basehttp:log_message] [INFO]- "POST /v1/users/user HTTP/1.1" 200 62
+[2019-11-16 19:56:29,802] [LinqHelper.py:57] [LinqHelper:db_find] [ERROR]- 请求出错：Cannot resolve keyword 'phone' into field. Choices are: created_time, id, login_phone, password, vername
+[2019-11-16 19:56:29,805] [basehttp.py:124] [basehttp:log_message] [INFO]- "POST /v1/users/user HTTP/1.1" 200 62
+[2019-11-16 19:58:18,773] [LinqHelper.py:57] [LinqHelper:db_find] [ERROR]- 请求出错：Cannot resolve keyword 'phone' into field. Choices are: created_time, id, login_phone, password, vername
+[2019-11-16 19:58:18,776] [basehttp.py:124] [basehttp:log_message] [INFO]- "POST /v1/users/user HTTP/1.1" 200 62
+[2019-11-16 19:58:53,991] [LinqHelper.py:57] [LinqHelper:db_find] [ERROR]- 请求出错：Cannot resolve keyword 'phone' into field. Choices are: created_time, id, login_phone, password, vername
+[2019-11-16 19:58:53,994] [basehttp.py:124] [basehttp:log_message] [INFO]- "POST /v1/users/user HTTP/1.1" 200 62
+[2019-11-16 20:00:10,041] [basehttp.py:124] [basehttp:log_message] [INFO]- "POST /v1/users/user HTTP/1.1" 200 62
+[2019-11-16 20:00:10,353] [basehttp.py:124] [basehttp:log_message] [INFO]- "POST /v1/users/user HTTP/1.1" 200 62
+[2019-11-16 20:00:11,142] [basehttp.py:124] [basehttp:log_message] [INFO]- "POST /v1/users/user HTTP/1.1" 200 62
+[2019-11-16 20:00:36,488] [basehttp.py:124] [basehttp:log_message] [INFO]- "POST /v1/users/user HTTP/1.1" 200 62
+[2019-11-16 20:00:54,890] [basehttp.py:124] [basehttp:log_message] [INFO]- "POST /v1/users/user HTTP/1.1" 200 62
+[2019-11-16 20:01:05,935] [basehttp.py:124] [basehttp:log_message] [INFO]- "POST /v1/users/user HTTP/1.1" 200 62
+[2019-11-16 20:01:25,449] [LinqHelper.py:57] [LinqHelper:db_find] [ERROR]- 请求出错：Cannot resolve keyword 'phone' into field. Choices are: created_time, id, login_phone, password, vername
+[2019-11-16 20:01:25,453] [basehttp.py:124] [basehttp:log_message] [INFO]- "POST /v1/users/user HTTP/1.1" 200 62
+[2019-11-16 20:01:30,007] [LinqHelper.py:57] [LinqHelper:db_find] [ERROR]- 请求出错：Cannot resolve keyword 'phone' into field. Choices are: created_time, id, login_phone, password, vername
+[2019-11-16 20:01:30,010] [basehttp.py:124] [basehttp:log_message] [INFO]- "POST /v1/users/user HTTP/1.1" 200 62
+[2019-11-16 20:03:15,622] [LinqHelper.py:52] [LinqHelper:db_find] [ERROR]- 请求出错：没有找到该用户
+[2019-11-16 20:03:15,623] [views.py:44] [views:post] [ERROR]- 添加失败：(1048, "Column 'vername' cannot be null")
+[2019-11-16 20:03:15,624] [basehttp.py:124] [basehttp:log_message] [INFO]- "POST /v1/users/user HTTP/1.1" 200 62
+[2019-11-16 20:03:42,011] [views.py:44] [views:post] [ERROR]- 添加失败：(1048, "Column 'vername' cannot be null")
+[2019-11-16 20:03:42,012] [basehttp.py:124] [basehttp:log_message] [INFO]- "POST /v1/users/user HTTP/1.1" 200 62
+[2019-11-16 20:04:25,602] [basehttp.py:124] [basehttp:log_message] [INFO]- "POST /v1/users/user HTTP/1.1" 200 13

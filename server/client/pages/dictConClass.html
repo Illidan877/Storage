@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>SB Admin - Start Bootstrap Template</title>
+    <!-- Bootstrap core CSS-->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Page level plugin CSS-->
+    <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="../css/sb-admin.css" rel="stylesheet">
+    <style>
+        .strip1 > td {
+            background-color: #f5f7fa;
+        }
+
+        form > *, form label {
+            margin-right: 15px;
+        }
+
+        .btn-default {
+            color: #333;
+            background-color: #fff;
+            border-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container-fluid">
+    <!-- Example DataTables Card-->
+    <div class="card">
+        <div class="card-header">
+            <i class="fa fa-table"></i> 类型管理
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <form class="form-inline" style="float: left;padding-left:15px  ;">
+                    <button type="button" class="btn btn-default" id="add" data-toggle="modal"
+                            data-target=".bs-example-modal-sm">增加
+                    </button>
+                    <button type="button" class="btn btn-default" id="upd" data-toggle="modal"
+                            data-target=".bs-example-modal-sm">修改
+                    </button>
+                    <button type="button" class="btn btn-default" id="del">删除</button>
+                    <button type="button" class="btn btn-default" id="select" data-toggle="modal"
+                            data-target=".bs-example-modal-sm">查看
+                    </button>
+                </form>
+
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+                    <thead>
+                    <tr>
+                        <th>选择</th>
+                        <th>类型名称</th>
+                        <th>创建时间</th>
+                        <th>是否启用</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Logout Modal-->
+<!-- Bootstrap core JavaScript-->
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Page level plugin JavaScript-->
+<script src="../vendor/datatables/jquery.dataTables.js"></script>
+<script src="../vendor/datatables/dataTables.bootstrap4.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="../js/sb-admin.min.js"></script>
+<!--<script src="js/sb-admin-datatables.min.js"></script>-->
+<!-- Custom scripts for this page-->
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">详细信息</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group f1">
+                        <label for="t1">编号:</label>
+                        <input type="text" class="form-control" id="t1" placeholder="">
+                    </div>
+                    <div class="form-group f2">
+                        <label for="t2">类型名称:</label>
+                        <input type="text" class="form-control" id="t2" placeholder="">
+                    </div>
+                    <div class="form-group f3">
+                        <label for="t3">创建时间:</label>
+                        <input type="datetime-local" class="form-control" id="t3" placeholder="">
+                    </div>
+                    <div class="form-group f4">
+                        <span for="i4">是否激活:</span>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="t4" value=true id="t4">
+                                激活
+                            </label>
+                            <label>
+                                <input type="radio" name="t4" value=false id="t5">
+                                取消
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="t6">确定</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        //删除
+        $('#del').on('click', function () {
+            arr = []
+            $('input[name=UserInfoId]:checked').each(function (i) {
+                arr.push($(this).val())
+            });
+            console.log(11111111)
+            $.ajax({
+                url: 'http://127.0.0.1:8000/v1/dict_con/class',
+                type: 'delete',
+                dataType: "json",
+                contentType: "application/json;charset=utf-8",
+                data: JSON.stringify({'id': arr}),
+                success: function (data) {
+                    if (data.code == '200') {
+
+                        $('#dataTable').DataTable().ajax.reload();
+
+                    } else {
+                        alert(data.error)
+                    }
+                },
+                error: function (q, w, e) {
+                    console.log(q, w, e)
+                }
+            })
+        })
+        //查看
+        $('#select').on('click', function () {
+            arr = []
+            $('input[name=UserInfoId]:checked').each(function (i) {
+                arr.push($(this).val())
+            });
+            if (arr.length != 1) {
+                alert('只能选中一个')
+                return
+            }
+            $.ajax({
+                url: 'http://127.0.0.1:8000/v1/dict_con/class?id=' + arr[0],
+                type: 'get',
+                dataType: "json",
+                contentType: "application/json;charset=utf-8",
+                success: function (data) {
+                    if (data.code == '200') {
+                        obj = data.data
+                        $('#t1').val(obj.id).attr("disabled", 'disable');
+                        $('#t2').val(obj.type_name).attr("disabled", 'disable');
+                        $('#t3').val(obj.created_time).attr("disabled", 'disable');
+                        $('#t4').attr("disabled", 'disable');
+                        $('#t5').attr("disabled", 'disable');
+                        $('#t6').attr("disabled", 'disable');
+                        $("input[name='t4'][value=" + obj.is_active + "]").attr("checked", true);
+                    } else {
+                        alert(data.error)
+                    }
+                },
+                error: function (q, w, e) {
+                    console.log(q, w, e)
+                }
+            })
+        })
+        //修改
+        $('#upd').on('click', function () {
+            arr = []
+            $('input[name=UserInfoId]:checked').each(function (i) {
+                arr.push($(this).val())
+            });
+            if (arr.length != 1) {
+                alert('只能选中一个')
+                return
+            }
+            $.ajax({
+                url: 'http://127.0.0.1:8000/v1/dict_con/class?id=' + arr[0],
+                type: 'get',
+                dataType: "json",
+                contentType: "application/json;charset=utf-8",
+                async: false,
+                success: function (data) {
+                    console.log(1)
+                    if (data.code == '200') {
+                        obj = data.data
+                        $("input[disabled='disabled']").removeAttr('disabled')
+
+                        $('#t1').val(obj.id).attr("disabled", 'disable');
+                        $('#t2').val(obj.type_name)
+                        $('#t3').val(obj.created_time)
+                        $("input[name='t4'][value=" + obj.is_active + "]").attr("checked", true);
+                    } else {
+                        alert(data.error)
+                    }
+                },
+
+            })
+            $('#t6').on('click', function () {
+                $.ajax({
+                    url: 'http://127.0.0.1:8000/v1/dict_con/class',
+                    type: 'put',
+                    dataType: "json",
+                    contentType: "application/json;charset=utf-8",
+                    data: JSON.stringify({
+                        id: $('#t1').val(),
+                        type_name: $('#t2').val(),
+                        created_time: $('#t3').val(),
+                        is_active: $('input[name="t4"]:checked').val() == 'true' ? true : false
+                    }),
+                    success: function (data) {
+                        if (data.code != 200) {
+                            alert(data.error)
+                        }
+                        $('.modal').modal('hide')
+                        $('#dataTable').DataTable().ajax.reload();
+
+                    },
+                    error: function (q, w, e) {
+                        console.log(q, w, e)
+                    }
+                })
+            })
+        })
+        //增加
+        $('#add').on('click', function () {
+            $('.form-group.f1').hide()
+            $('.form-group.f3').hide()
+            $('.form-group.f4').hide()
+            $('#t6').on('click', function () {
+                $('#t6').attr("disabled", 'disable');
+                $.ajax({
+                    url: 'http://127.0.0.1:8000/v1/dict_con/class',
+                    type: 'post',
+                    dataType: "json",
+                    contentType: "application/json;charset=utf-8",
+                    data: JSON.stringify({
+                        type_name: $('#t2').val(),
+                    }),
+                    success: function (data) {
+                        if (data.code != 200) {
+                            alert(data.error)
+                        }
+                        $('.modal').modal('hide')
+                        $('#dataTable').DataTable().ajax.reload();
+                        setTimeout(function () {
+                            $('.form-group.f1').show()
+                            $('.form-group.f3').show()
+                            $('.form-group.f4').show()
+                            $('#t6').removeAttr("disabled");
+                        }, 300)
+                    },
+                })
+            })
+        })
+
+
+        //...
+        dtconfig = {
+            lengthMenu: [10, 15, 20],
+            language: {
+                lengthMenu: "每页显示 _MENU_ 记录",
+                zeroRecords: "没有匹配的数据",
+                info: "第_PAGE_页/共 _PAGES_页 ( 共\_TOTAL\_ 条记录 )",
+                infoEmpty: "没有符合条件的记录",
+                search: "查找",
+                infoFiltered: "(从 _MAX_条记录中过滤)",
+                paginate: {"first": "首页 ", "last": "末页", "next": "下一页", "previous": "上一页"}
+            },
+            searching: true,
+            ordering: true,
+            info: true,
+            lengthChange: false,
+            processing: true,//是否显示加载中提示
+            autoWidth: true,//是否自动计算表格各列宽度
+            stripeClasses: ['strip1', 'strip2'],
+            "ajax": {
+                url: "http://127.0.0.1:8000/v1/dict_con/class",
+                type: 'get',
+                data: function (param) {
+                    delete param.columns
+                    return param;
+                },
+                //用于处理服务器端返回的数据。 dataSrc是DataTable特有的
+                dataSrc: function (myJson) {
+
+                    if (myJson.timeout) {
+                        return "";
+                    }
+                    return myJson.data;
+                },
+                dataRender: function (data) {
+                    return data.data;
+                },
+                control: {
+                    "previous": 'table.previous()',//上一页,可以是其他第三方分页插件的API
+                    "next": 'table.next()'//下一页，同上
+                }
+            },
+            columns: [//列绑定
+                {"defaultContent": "", orderable: false,},
+                {"data": "type_name", orderable: false},
+                {"data": "created_time", orderable: true},
+                {"data": "is_active", orderable: true},
+            ],
+            columnDefs: [//列定义
+                {
+                    "targets": [0],
+                    "data": "id",
+                    "render": function (data, type, full) {
+                        return "<input type='checkbox' value='" + data + "' name='UserInfoId'>";
+                    }
+                },
+                {
+                    "targets": [1],
+                    "render": function (data, type, full) {
+                        return full.type_name ;
+                    }
+                },
+            ],
+            initComplete: function (settings, json) {
+                $('div.loading').remove();
+            },
+        }
+        $(document).ready(function () {
+            $("#dataTable").DataTable(dtconfig)
+        });
+
+    })
+
+</script>
+</body>
+
+</html>
