@@ -1,0 +1,10 @@
+[2019-11-18 16:33:17,241] [views.py:90] [views:delete] [ERROR]- 删除异常：'TUser' object is not iterable
+[2019-11-18 17:08:26,436] [LinqHelper.py:53] [LinqHelper:db_find] [ERROR]- 请求出错：Cannot resolve keyword 'is_active' into field. Choices are: id, parent, right_name, trole
+[2019-11-18 17:08:27,583] [LinqHelper.py:53] [LinqHelper:db_find] [ERROR]- 请求出错：Cannot resolve keyword 'is_active' into field. Choices are: id, parent, right_name, trole
+[2019-11-18 17:08:32,229] [LinqHelper.py:53] [LinqHelper:db_find] [ERROR]- 请求出错：Cannot resolve keyword 'is_active' into field. Choices are: id, parent, right_name, trole
+[2019-11-18 17:08:33,768] [LinqHelper.py:53] [LinqHelper:db_find] [ERROR]- 请求出错：Cannot resolve keyword 'is_active' into field. Choices are: id, parent, right_name, trole
+[2019-11-18 17:09:23,938] [LinqHelper.py:53] [LinqHelper:db_find] [ERROR]- 请求出错：Cannot resolve keyword 'is_active' into field. Choices are: id, parent, right_name, trole
+[2019-11-18 17:09:41,105] [LinqHelper.py:53] [LinqHelper:db_find] [ERROR]- 请求出错：Cannot resolve keyword 'is_active' into field. Choices are: id, parent, right_name, trole
+[2019-11-18 17:15:10,224] [views.py:70] [views:post] [ERROR]- 添加失败：(1048, "Column 'tRole_id' cannot be null")
+[2019-11-18 17:17:09,197] [views.py:70] [views:post] [ERROR]- 添加失败：(1452, 'Cannot add or update a child row: a foreign key constraint fails (`storage`.`users_tuser`, CONSTRAINT `users_tuser_tRole_id_b01b7d65_fk_users_trole_id` FOREIGN KEY (`tRole_id`) REFERENCES `users_trole` (`id`))')
+[2019-11-18 18:26:16,461] [LinqHelper.py:53] [LinqHelper:db_find] [ERROR]- 请求出错：Cannot resolve keyword 'is_active' into field. Choices are: created_time, description, id, name, parent_role, right, right_id, tuser

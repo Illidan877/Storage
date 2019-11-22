@@ -1,0 +1,24 @@
+[2019-11-20 14:15:27,759] [LinqHelper.py:86] [LinqHelper:db_find] [ERROR]- 请求出错：'QuerySet' object is not callable
+[2019-11-20 14:15:47,861] [LinqHelper.py:86] [LinqHelper:db_find] [ERROR]- 请求出错：'QuerySet' object is not callable
+[2019-11-20 14:17:44,053] [LinqHelper.py:87] [LinqHelper:db_find] [ERROR]- 请求出错：'QuerySet' object is not callable
+[2019-11-20 14:18:11,405] [LinqHelper.py:87] [LinqHelper:db_find] [ERROR]- 请求出错：'list' object is not callable
+[2019-11-20 14:26:18,974] [LinqHelper.py:87] [LinqHelper:db_find] [ERROR]- 请求出错：Cannot resolve keyword 'is_active' into field. Choices are: created_time, description, id, name, parent_role, right, right_id, tuser
+[2019-11-20 14:26:28,541] [LinqHelper.py:87] [LinqHelper:db_find] [ERROR]- 请求出错：Cannot resolve keyword 'is_active' into field. Choices are: created_time, description, id, name, parent_role, right, right_id, tuser
+[2019-11-20 14:27:32,760] [LinqHelper.py:87] [LinqHelper:db_find] [ERROR]- 请求出错：Cannot resolve keyword 'is_active' into field. Choices are: created_time, description, id, name, parent_role, right, right_id, tuser
+[2019-11-20 14:27:34,204] [LinqHelper.py:87] [LinqHelper:db_find] [ERROR]- 请求出错：Cannot resolve keyword 'is_active' into field. Choices are: created_time, description, id, name, parent_role, right, right_id, tuser
+[2019-11-20 14:28:27,879] [LinqHelper.py:87] [LinqHelper:db_find] [ERROR]- 请求出错：Cannot resolve keyword 'is_active' into field. Choices are: created_time, description, id, name, parent_role, right, right_id, tuser
+[2019-11-20 14:28:39,789] [LinqHelper.py:87] [LinqHelper:db_find] [ERROR]- 请求出错：Cannot resolve keyword 'is_active' into field. Choices are: created_time, description, id, name, parent_role, right, right_id, tuser
+[2019-11-20 14:28:46,626] [LinqHelper.py:87] [LinqHelper:db_find] [ERROR]- 请求出错：Cannot resolve keyword 'is_active' into field. Choices are: created_time, description, id, name, parent_role, right, right_id, tuser
+[2019-11-20 14:30:17,517] [LinqHelper.py:87] [LinqHelper:db_find] [ERROR]- 请求出错：Cannot resolve keyword 'is_active' into field. Choices are: created_time, description, id, name, parent_role, right, right_id, tuser
+[2019-11-20 14:30:21,461] [LinqHelper.py:87] [LinqHelper:db_find] [ERROR]- 请求出错：Cannot resolve keyword 'is_active' into field. Choices are: created_time, description, id, name, parent_role, right, right_id, tuser
+[2019-11-20 14:30:48,022] [LinqHelper.py:87] [LinqHelper:db_find] [ERROR]- 请求出错：Cannot resolve keyword 'is_active' into field. Choices are: created_time, description, id, name, parent_role, right, right_id, tuser
+[2019-11-20 16:03:32,152] [views.py:154] [views:get] [ERROR]- 查询失败：本页结果未空
+[2019-11-20 16:26:28,527] [views.py:154] [views:get] [ERROR]- 查询失败：页号少于1
+[2019-11-20 16:26:34,293] [views.py:154] [views:get] [ERROR]- 查询失败：页号少于1
+[2019-11-20 16:26:53,524] [views.py:154] [views:get] [ERROR]- 查询失败：页号少于1
+[2019-11-20 16:27:34,628] [views.py:154] [views:get] [ERROR]- 查询失败：页号少于1
+[2019-11-20 16:29:23,117] [views.py:154] [views:get] [ERROR]- 查询失败：页号少于1
+[2019-11-20 21:10:46,529] [views.py:164] [views:get] [ERROR]- 查询失败：本页结果未空
+[2019-11-20 21:10:50,608] [views.py:164] [views:get] [ERROR]- 查询失败：本页结果未空
+[2019-11-20 21:10:56,955] [views.py:164] [views:get] [ERROR]- 查询失败：本页结果未空
+[2019-11-20 21:11:01,963] [views.py:164] [views:get] [ERROR]- 查询失败：本页结果未空

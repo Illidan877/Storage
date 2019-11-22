@@ -37,6 +37,10 @@ body.fixed-nav {
     line-height: 45px;
 }
 
+.glyphicon {
+    margin-right: 20px;
+}
+
 .scroll-to-top:focus, .scroll-to-top:hover {
     color: white;
 }
@@ -164,13 +168,13 @@ body.fixed-nav {
     #mainNav .navbar-collapse .navbar-sidenav {
         position: absolute;
         top: 0;
-        left: 0;
+        left: -1px;
         overflow-x: hidden;
         overflow-y: auto;
         -webkit-flex-direction: column;
         -ms-flex-direction: column;
         flex-direction: column;
-        margin-top: 56px;
+        margin-top: 63px;
     }
 
     #mainNav .navbar-collapse .navbar-sidenav > .nav-item {

@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/wwn.css">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        .header-tab {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .foot-tab {
+            position: fixed;
+            bottom: 0;
+            right: 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="panel panel-default" style="margin:0;height:100%;border-top:0;position: relative;top:-1px">
+    <div class="panel-body" style="height:100%;padding-bottom: 0;">
+        <div class="body-tab">
+            <div class="header-tab">
+                <div class="left" style="margin-bottom: 15px"></div>
+                <div class="right"></div>
+            </div>
+            <table class="table table-bordered table-hover table-striped"></table>
+        </div>
+        <div class="foot-tab">
+            <ul class="pagination"></ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel"></h4>
+            </div>
+            <div class="modal-body" id="data-box"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary available" id="save">确定</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script>
+    let pid = window.location.href.split('?page=')[1];
+    const PATHURL = "http://127.0.0.1:8000"
+    let tab_page = 1
+    let table_data = ''
+    let server_dict = {"link": '', 'type': '', 'data': ''}
+    $(document).ready(function () {
+        get_ofroles(pid)
+    })
+
+    var get_ofroles = function (pid) {
+        $.ajax({
+            url: 'http://127.0.0.1:8000/v1/base_dict/jurisdiction?pid=' + pid,
+            type: 'get',
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            success: function (req) {
+                if (req.code == 200) {
+                    tooltips(req.data)
+                } else {
+                    alert(req.error)
+                }
+            }
+        })
+    }
+
+    var tooltips = function (data) {
+        let button = []
+        // let select = []
+        for (var a = 0; a < data.length; a++) {
+            let type_id = data[a].type_id
+            if (type_id == 4) {
+                button.push(create_button(data[a]))
+            } else if (type_id == 5) {
+                create_select(data[a])
+            } else if (type_id == 6) {
+                window.tab_link = data[a].link
+                create_table(PATHURL + data[a].link + tab_page)
+            }
+        }
+        $('.left').html(button.join(''))
+    }
+    //    创建按钮
+    var create_button = function (data) {
+        return ` <button class="btn btn-default"  onclick="click_hand('${data.id}','${data.link}','${data.name}')">${data.name}</button>`;
+    }
+    //    创建下拉框
+    var create_select = function (data) {
+        $.ajax({
+            url: PATHURL + data.link,
+            type: 'get',
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            success: function (req) {
+                if (req.code == 200) {
+                    let html = [` <span>${data.name}</span><select class='form-control'  id="sel_${data.id}" onclick="select_change('sel_${data.id}','${data.params}')">`]
+                    html.push(`<option value = "-1">全部</option>`)
+                    for (let a = 0; a < req.data.length; a++) {
+                        html.push(`<option value = "${req.data[a].id}">${req.data[a].name} </option>`)
+                    }
+                    html.push(`</select>`)
+                    $('.right').html(html.join(''))
+                } else {
+                    alert(req.error)
+                }
+            }
+        })
+    }
+    //    创建表格
+    var create_table = function (link) {
+        let html = []
+        $.ajax({
+            url: link,
+            type: 'get',
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            success: function (req) {
+                if (req.code == 200) {
+                    table_data = req.data.data
+                    html.push(`<thead><tr>`)
+                    for (var a = 0; a < req.data.th.length; a++) {
+                        html.push(`<th>${req.data.th[a]}</th>`)
+                    }
+                    html.push(`<thead></tr><tbody>`)
+                    for (var a = 0; a < req.data.data.length; a++) {
+                        html.push(`<tr>`)
+                        html.push(`<td> <input type="radio" name="favorite" value="${req.data.data[a].id}"></td>`)
+                        Object.keys(req.data.data[a]).forEach(function (key) {
+                            html.push(
+                                `<td>${req.data.data[a][key]}</td>`
+                            )
+                        });
+                        html.push(`</tr>`)
+                    }
+                    html.push(`</tbody>`)
+                    creatte_page(req.data.pages, req.data.current)
+                    $('.table').html(html.join(''))
+
+                } else {
+                    alert(req.error)
+                }
+            }
+        })
+    }
+    //      创建分页
+    var creatte_page = function (all, current) {
+        let arr = []
+        current = parseInt(current)
+        arr.push(`<li>`)
+        if (current > 1) {
+            arr.push(`<a href="#" aria-label="Previous" onclick="set_page(${current - 1})">`)
+        } else {
+            arr.push(`<a class="activ" href="#" aria-label="Previous" >`)
+        }
+        arr.push(`<span aria-hidden="true">上一页</span> </a></li>`)
+        for (var a = 0; a < all; a++) {
+            if (current == a + 1) {
+                arr.push(`<li><a class="activ" >${a + 1}</a></li>`)
+            } else {
+                arr.push(`<li><a  href="#"  onclick="set_page(${a + 1})">${a + 1}</a></li>`)
+
+            }
+        }
+        arr.push(`<li>`)
+        if (tab_page + 1 <= all) {
+            arr.push(`<a href="#"  aria-label="Previous" onclick="set_page(${current + 1})">`)
+        } else {
+            arr.push(`<a href="#" aria-label="Previous" class="activ">`)
+        }
+        arr.push(` <span aria-hidden="true">下一页</span></a></li></ul>`)
+        $('.pagination').html(arr.join(''))
+
+    }
+    //      点击分页条换
+    var set_page = function (n) {
+        tab_page = n
+        create_table(PATHURL + tab_link + tab_page)
+    }
+    //      点击事件
+    var click_hand = function (id, link, name) {
+        $('#myModalLabel').html(name)
+        let id_change = $('input[name="favorite"]:checked').val();
+        if ($('#data-box').html() == "") {
+            server_dict = {"link": link, 'type': '', 'data': ''}
+            create_modal()
+        }
+        if (name == '增加') {
+            $('input.available').val("")
+            $('#myModal .available').removeAttr('disabled')
+            server_dict.data = get_modal_data()
+            server_dict.type = 'post'
+            $('#myModal').modal('show')
+
+        } else if (name == '删除') {
+            server_dict.id = id_change
+            server_dict.type = 'delete'
+        } else {
+            if (name == '修改') {
+                $('#myModal .available').removeAttr('disabled')
+                server_dict.data = get_modal_data()
+                server_dict.id = id_change
+                server_dict.type = 'put'
+            } else {
+                $('#myModal .available').attr('disabled', 'disabled')
+            }
+            show_data(id_change)
+            $('#myModal').modal('show')
+        }
+    }
+    // 获取模态框中的数据
+    var get_modal_data = function () {
+        let req = {}
+        $.each($('.available:not(button)'), function (key, val) {
+            let el = $(val)
+            req[el.attr('id').substr(2)] = el  //  不能写死 .val()
+        })
+        return req
+    }
+    //创建模态框
+    var create_modal = function () {
+        let arr = []
+        $.each(setting[pid], function (key, val) {
+            if (val.type != 'select') {
+                $('#data-box').append(`<div class="form-group"><label for="m_${key}">${val.name}</label> <input type="${val.type}" class="form-control available" id="m_${key}" placeholder="请输入${val.name}"></div>`)
+            } else {
+                $.ajax({
+                    url: PATHURL + val.link,
+                    type: 'get',
+                    dataType: "json",
+                    contentType: "application/json;charset=utf-8",
+                    async: false,
+                    success: function (req) {
+                        if (req.code == 200) {
+                            arr.push(`<div class="form-group"><label for="m_${key}">${val.name}</label><select id="m_${key}" class="form-control available">`)
+                            $.each(req.data, function (key, val) {
+                                arr.push(`<option value="${val.id}">${val.name}</option>`)
+                            })
+                            arr.push(`</select></div>`)
+                            $('#data-box').append(arr.join(''))
+                        } else {
+                            alert(req.error)
+                        }
+                    }
+                })
+            }
+        })
+    }
+    //  将数据渲染到表单
+    var show_data = function (id) {
+        let temp = ""
+        $.each(table_data, function (key, val) {
+            if (val.id == id) {
+                temp = val
+            }
+        })
+        $('#data-box option').removeAttr('selected')
+        $.each(temp, function (key, val) {
+            if (key.indexOf('_id') == -1) {
+                $(`#data-box #m_${key}`).val(val)
+            } else {
+                console.log(`option[value="${val}"]`)
+                console.log(`#m_${key}`)
+                $(`#m_${key}`).find(`option[value="${val}"]`).attr("selected", "selected");
+            }
+        })
+    }
+    //      下拉框切换
+    var select_change = function (el, params) {
+        let val = $("#" + el).val()
+        let url = ""
+        if (val == -1) {
+            url = PATHURL + tab_link + 1
+        } else {
+            url = PATHURL + tab_link + 1 + `&${params}=${$("#" + el).val()}`
+        }
+        create_table(url)
+    }
+
+
+    $('#save').on('click', function () {
+        let data = {}
+        if (server_dict.type != 'delete') {
+            $.each(server_dict.data, function (key, val) {
+                console.log(val)
+                data[key] = val.val()
+            })
+        }
+        data.id = server_dict.id
+        $.ajax({
+            url: PATHURL + server_dict.link,
+            type: server_dict.type,
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            data: JSON.stringify(data),
+            success: function (req) {
+                if (req.code == 200) {
+                    $('#myModal').modal('hide')
+                    console.log(PATHURL + tab_link + 1)
+                    create_table(PATHURL + tab_link + 1)
+                } else {
+                    alert(req.error)
+                }
+            }, error: function (q, w, e) {
+                console.log(q)
+                console.log(w)
+                console.log(e)
+            }
+        })
+    })
+    var setting = {
+        '30': {
+            'name': {'name': '登录账号', 'type': 'text'},
+            'password': {'name': '密码', 'type': 'password'},
+            'vname': {'name': '昵称', 'type': 'text'},
+            'rolesto_id': {'name': '角色', 'type': 'select', 'link': "/v1/base_dict/ofroles"},
+        }
+    }
+</script>
+
+
+</body>
+</html>

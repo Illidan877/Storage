@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
+<style>
+    .tree {
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 300px;
+    }
+
+    .tree li {
+        cursor: pointer;
+    }
+
+    .tree li:hover {
+        background: #333333;
+        color: #fff;
+    }
+
+
+    #main {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-around;
+        padding: 20px;
+    }
+
+
+    .tree {
+        width: 30%;
+        border: 1px solid #000;
+        height: 600px;
+    }
+
+    button {
+        margin-right: 20px;
+    }
+
+</style>
+<div id="main">
+    <ul id="u0" class="tree">
+    </ul>
+    <div style="width:50%;">
+        <p>
+            <button id="add" class="btn btn-default">增加</button>
+            <button id="del" class="btn btn-default">删除</button>
+            <button id="upd" class="btn btn-default">修改</button>
+            <button id="find" class="btn btn-default">查看</button>
+        </p>
+
+        <table class="table table-striped table-bordered">
+            <thead>
+            <tr>
+                <td></td>
+                <td>角色名称</td>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script>
+    var get_treelist = function () {
+        $.ajax({
+            url: 'http://127.0.0.1:8000/v1/base_dict/jurisdiction?type=1',
+            type: 'get',
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            async: false,
+            success: function (req) {
+                window.treelist = req.data
+                window.maxid = 0
+                for (var a = 0; a < req.data.length; a++) {
+                    if (window.maxid < req.data[a].id) {
+                        window.maxid = req.data[a].id
+                    }
+                }
+            }
+        })
+    }
+
+    var init = function () {
+        get_treelist()
+        create_tree()
+        click_bind()
+        get_ofroles()
+
+    }
+
+    var get_ofroles = function () {
+        $.ajax({
+            url: 'http://127.0.0.1:8000/v1/base_dict/ofroles',
+            type: 'get',
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            async: false,
+            success: function (req) {
+                if (req.code == 200) {
+                    var arr = []
+                    for (var a = 0; a < req.data.length; a++) {
+                        arr.push(`<tr><td><input type="radio" name="node_id" value="${req.data[a].id}"  data-roleof="${req.data[a].roleof}"></td><td>${req.data[a].name}</td></tr>`)
+                    }
+                    $(".table tbody").html(arr.join(''))
+                } else {
+                    alert(req.error)
+                }
+
+            }
+        })
+
+    }
+
+
+    var create_tree = function () {
+        $(`#u0`).html("")
+        for (var a = 0; a < treelist.length; a++) {
+            $(`#u${treelist[a].pid}`).append(
+                `<li><label><input type="checkbox" id="t_${treelist[a].id}" value="${treelist[a].id}">  ${treelist[a].name}</label></li><ul id="u${treelist[a].id}"></ul>`)
+        }
+    }
+    var click_bind = function () {
+        $('#u0').on('click', 'li', function (e) {
+            $(e.target).next().slideToggle(150)
+            e.stopPropagation();
+        })
+        $('#add').on('click', function () {
+            $.ajax({
+                url: 'http://127.0.0.1:8000/v1/base_dict/ofroles',
+                type: 'post',
+                dataType: "json",
+                data: JSON.stringify({'name': prompt('请输入姓名')}),
+                contentType: "application/json;charset=utf-8",
+                success: function (req) {
+                    if (req.code == 200) {
+                        alert('添加成功')
+                        get_ofroles()
+                    } else {
+                        alert(req.error)
+                    }
+                }
+            })
+        })
+
+
+        $('#del').on('click', function () {
+            $.ajax({
+                url: 'http://127.0.0.1:8000/v1/base_dict/ofroles',
+                type: 'delete',
+                dataType: "json",
+                data: JSON.stringify({'id': $('input:radio:checked').val()}),
+                contentType: "application/json;charset=utf-8",
+                success: function (req) {
+                    if (req.code == 200) {
+                        alert('删除成功')
+                        get_ofroles()
+                    } else {
+                        alert(req.error)
+                    }
+
+                }
+            })
+        })
+
+        $('#find').on('click', function () {
+            $("input[type='checkbox']:checked").prop("checked", false)
+            console.log($('input:radio:checked'))
+            var ofroles = JSON.parse($('input:radio:checked').attr('data-roleof'))
+            for (var a = 0; a < ofroles.length; a++) {
+                $(`#t_` + ofroles[a]).prop("checked", true)
+            }
+        })
+
+
+        $('#upd').on('click', function () {
+            data = []
+            $("input[type='checkbox']:checked").each(function (n, e) {
+                data.push($(e).val())
+            })
+
+            $.ajax({
+                url: 'http://127.0.0.1:8000/v1/base_dict/ofroles',
+                type: 'put',
+                dataType: "json",
+                data: JSON.stringify({
+                    'id': $("input[type='radio']:checked").val(),
+                    'roleof': JSON.stringify(data)
+                }),
+                contentType: "application/json;charset=utf-8",
+                async: false,
+                success: function (req) {
+                    if (req.code == 200) {
+                        alert('修改成功')
+                        get_ofroles()
+                    } else {
+                        alert(req.error)
+                    }
+
+                }
+            })
+        })
+    }
+
+    $(document).ready(function () {
+        init()
+    })
+
+</script>
+</body>
+</html>

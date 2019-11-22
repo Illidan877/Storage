@@ -1,0 +1,37 @@
+[2019-11-22 03:20:39,845] [LinqHelper.py:77] [LinqHelper:db_find] [ERROR]- 查找失败：int() argument must be a string, a bytes-like object or a number, not 'dict'
+[2019-11-22 03:20:43,451] [LinqHelper.py:77] [LinqHelper:db_find] [ERROR]- 查找失败：int() argument must be a string, a bytes-like object or a number, not 'dict'
+[2019-11-22 03:20:49,074] [LinqHelper.py:77] [LinqHelper:db_find] [ERROR]- 查找失败：int() argument must be a string, a bytes-like object or a number, not 'dict'
+[2019-11-22 14:29:39,177] [LinqHelper.py:102] [LinqHelper:db_find] [ERROR]- 查找失败：Cannot resolve keyword 'password' into field. Choices are: basemodel_ptr, basemodel_ptr_id, created_time, id, is_active, name, roleof, updated_time, users
+[2019-11-22 14:29:39,189] [LinqHelper.py:84] [LinqHelper:db_add] [ERROR]- 增加失败：'password' is an invalid keyword argument for this function
+[2019-11-22 14:30:33,532] [LinqHelper.py:102] [LinqHelper:db_find] [ERROR]- 查找失败：Cannot resolve keyword 'password' into field. Choices are: basemodel_ptr, basemodel_ptr_id, created_time, id, is_active, name, roleof, updated_time, users
+[2019-11-22 14:30:33,533] [LinqHelper.py:84] [LinqHelper:db_add] [ERROR]- 增加失败：'password' is an invalid keyword argument for this function
+[2019-11-22 14:30:41,240] [LinqHelper.py:102] [LinqHelper:db_find] [ERROR]- 查找失败：Cannot resolve keyword 'password' into field. Choices are: basemodel_ptr, basemodel_ptr_id, created_time, id, is_active, name, roleof, updated_time, users
+[2019-11-22 14:30:41,241] [LinqHelper.py:84] [LinqHelper:db_add] [ERROR]- 增加失败：'password' is an invalid keyword argument for this function
+[2019-11-22 14:31:50,105] [LinqHelper.py:103] [LinqHelper:db_find] [ERROR]- 查找失败：Cannot resolve keyword 'password' into field. Choices are: basemodel_ptr, basemodel_ptr_id, created_time, id, is_active, name, roleof, updated_time, users
+[2019-11-22 14:33:41,845] [LinqHelper.py:102] [LinqHelper:db_find] [ERROR]- 查找失败：Cannot resolve keyword 'password' into field. Choices are: basemodel_ptr, basemodel_ptr_id, created_time, id, is_active, name, roleof, updated_time, users
+[2019-11-22 14:33:41,954] [LinqHelper.py:84] [LinqHelper:db_add] [ERROR]- 增加失败：(1146, "Table 'storage2.base_dict_users' doesn't exist")
+[2019-11-22 14:34:19,086] [LinqHelper.py:102] [LinqHelper:db_find] [ERROR]- 查找失败：Cannot resolve keyword 'password' into field. Choices are: basemodel_ptr, basemodel_ptr_id, created_time, id, is_active, name, roleof, updated_time, users
+[2019-11-22 14:34:19,155] [LinqHelper.py:84] [LinqHelper:db_add] [ERROR]- 增加失败：(1406, "Data too long for column 'password' at row 1")
+[2019-11-22 14:35:21,813] [LinqHelper.py:102] [LinqHelper:db_find] [ERROR]- 查找失败：Cannot resolve keyword 'password' into field. Choices are: basemodel_ptr, basemodel_ptr_id, created_time, id, is_active, name, roleof, updated_time, users
+[2019-11-22 14:35:21,864] [LinqHelper.py:84] [LinqHelper:db_add] [ERROR]- 增加失败：(1406, "Data too long for column 'password' at row 1")
+[2019-11-22 14:35:39,566] [LinqHelper.py:102] [LinqHelper:db_find] [ERROR]- 查找失败：Cannot resolve keyword 'password' into field. Choices are: basemodel_ptr, basemodel_ptr_id, created_time, id, is_active, name, roleof, updated_time, users
+[2019-11-22 14:38:18,202] [LinqHelper.py:102] [LinqHelper:db_find] [ERROR]- 查找失败：Cannot resolve keyword 'password' into field. Choices are: basemodel_ptr, basemodel_ptr_id, created_time, id, is_active, name, roleof, updated_time, users
+[2019-11-22 14:38:19,900] [LinqHelper.py:102] [LinqHelper:db_find] [ERROR]- 查找失败：Cannot resolve keyword 'password' into field. Choices are: basemodel_ptr, basemodel_ptr_id, created_time, id, is_active, name, roleof, updated_time, users
+[2019-11-22 14:38:20,571] [LinqHelper.py:102] [LinqHelper:db_find] [ERROR]- 查找失败：Cannot resolve keyword 'password' into field. Choices are: basemodel_ptr, basemodel_ptr_id, created_time, id, is_active, name, roleof, updated_time, users
+[2019-11-22 14:38:20,985] [LinqHelper.py:102] [LinqHelper:db_find] [ERROR]- 查找失败：Cannot resolve keyword 'password' into field. Choices are: basemodel_ptr, basemodel_ptr_id, created_time, id, is_active, name, roleof, updated_time, users
+[2019-11-22 14:38:21,387] [LinqHelper.py:102] [LinqHelper:db_find] [ERROR]- 查找失败：Cannot resolve keyword 'password' into field. Choices are: basemodel_ptr, basemodel_ptr_id, created_time, id, is_active, name, roleof, updated_time, users
+[2019-11-22 14:39:45,054] [LinqHelper.py:102] [LinqHelper:db_find] [ERROR]- 查找失败：Cannot resolve keyword 'password' into field. Choices are: basemodel_ptr, basemodel_ptr_id, created_time, id, is_active, name, roleof, updated_time, users
+[2019-11-22 14:39:48,026] [LinqHelper.py:102] [LinqHelper:db_find] [ERROR]- 查找失败：Cannot resolve keyword 'password' into field. Choices are: basemodel_ptr, basemodel_ptr_id, created_time, id, is_active, name, roleof, updated_time, users
+[2019-11-22 14:39:50,618] [LinqHelper.py:102] [LinqHelper:db_find] [ERROR]- 查找失败：Cannot resolve keyword 'password' into field. Choices are: basemodel_ptr, basemodel_ptr_id, created_time, id, is_active, name, roleof, updated_time, users
+[2019-11-22 14:39:51,115] [LinqHelper.py:102] [LinqHelper:db_find] [ERROR]- 查找失败：Cannot resolve keyword 'password' into field. Choices are: basemodel_ptr, basemodel_ptr_id, created_time, id, is_active, name, roleof, updated_time, users
+[2019-11-22 22:24:19,103] [LinqHelper.py:84] [LinqHelper:db_add] [ERROR]- 增加失败：(1452, 'Cannot add or update a child row: a foreign key constraint fails (`wwn`.`base_dict_users`, CONSTRAINT `base_dict_users_rolesto_id_e1e43ce4_fk_base_dict` FOREIGN KEY (`rolesto_id`) REFERENCES `base_dict_roles` (`basemodel_ptr_id`))')
+[2019-11-22 22:40:35,018] [LinqHelper.py:103] [LinqHelper:db_find] [ERROR]- 查找失败：(2003, "Can't connect to MySQL server on '49.232.11.155' ([Errno 113] No route to host)")
+[2019-11-22 22:40:36,476] [LinqHelper.py:103] [LinqHelper:db_find] [ERROR]- 查找失败：(2003, "Can't connect to MySQL server on '49.232.11.155' ([Errno 113] No route to host)")
+[2019-11-22 22:40:37,337] [LinqHelper.py:103] [LinqHelper:db_find] [ERROR]- 查找失败：(2003, "Can't connect to MySQL server on '49.232.11.155' ([Errno 113] No route to host)")
+[2019-11-22 22:40:37,930] [LinqHelper.py:103] [LinqHelper:db_find] [ERROR]- 查找失败：(2003, "Can't connect to MySQL server on '49.232.11.155' ([Errno 113] No route to host)")
+[2019-11-22 22:41:35,120] [LinqHelper.py:103] [LinqHelper:db_find] [ERROR]- 查找失败：(2003, "Can't connect to MySQL server on '49.232.11.155' ([Errno 113] No route to host)")
+[2019-11-22 22:41:36,117] [LinqHelper.py:103] [LinqHelper:db_find] [ERROR]- 查找失败：(2003, "Can't connect to MySQL server on '49.232.11.155' ([Errno 113] No route to host)")
+[2019-11-22 22:41:37,005] [LinqHelper.py:103] [LinqHelper:db_find] [ERROR]- 查找失败：(2003, "Can't connect to MySQL server on '49.232.11.155' ([Errno 113] No route to host)")
+[2019-11-22 22:41:38,290] [LinqHelper.py:103] [LinqHelper:db_find] [ERROR]- 查找失败：(2003, "Can't connect to MySQL server on '49.232.11.155' ([Errno 113] No route to host)")
+[2019-11-22 22:41:39,056] [LinqHelper.py:103] [LinqHelper:db_find] [ERROR]- 查找失败：(2003, "Can't connect to MySQL server on '49.232.11.155' ([Errno 113] No route to host)")
+[2019-11-22 22:48:10,593] [LinqHelper.py:84] [LinqHelper:db_add] [ERROR]- 增加失败：(1452, 'Cannot add or update a child row: a foreign key constraint fails (`wwn`.`base_dict_users`, CONSTRAINT `base_dict_users_rolesto_id_e1e43ce4_fk_base_dict` FOREIGN KEY (`rolesto_id`) REFERENCES `base_dict_roles` (`basemodel_ptr_id`))')

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户管理</title>
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/wwn.css">
+</head>
+<body>
+
+<div class="container-fluid main">
+    <div class="card">
+        <div class="card-header">
+
+            <i class="fa fa-table"></i>用户管理
+        </div>
+        <ul class="nav nav-tabs" role="tablist">
+        </ul>
+
+    </div>
+</div>
+<div class="modal fade bs-example-modal-sm adduser" tabindex="-1" role="dialog" aria-labelledby="adduser">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">详细信息</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group f1">
+                        <label for="vname">昵称:</label>
+                        <input type="text" class="form-control" id="vname" placeholder="">
+                    </div>
+                    <div class="form-group f1">
+                        <label for="phone">手机号:</label>
+                        <input type="text" class="form-control" id="phone" placeholder="">
+                    </div>
+                    <div class="form-group f1">
+                        <label for="pwd">密码:</label>
+                        <input type="password" class="form-control" id="pwd" placeholder="">
+                    </div>
+                    <div class="form-group f1">
+                        <label for="pwd">角色:</label>
+                        <select name="" id="tRole_id" class="select">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="t6">确定</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../vendor/jquery/jquery.js"></script>
+<script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+<script>
+    var config = []
+    var url = 'http://127.0.0.1:8000'
+
+    $(document).ready(function () {
+        get_setting()
+        click_bind()
+    })
+
+    // 创建全局配置
+    var get_config = function (data) {
+        // 标签页
+        var card_body = []
+        var example_tabs = []
+        for (var a = 0; a < data.length; a++) {
+
+            //标签页
+            if (data[a].type_id == 4) {
+                if (example_tabs.length == 0) {
+                    example_tabs.push(` <li role="presentation" class="active"> <a href="#page${data[a].id}" aria-controls="home" role="tab" data-toggle="tab">${data[a].right_name}</a></li>`)
+                    $('.card').append(`
+<div class="card-body" id="page${data[a].id}">
+    <div>
+        <div class="bcard-header">
+            <div class="left"></div>
+            <div class="right"></div>
+        </div>
+        <div class="bcard-body"></div>
+    </div>
+    <div class="bcard-foot"></div>
+</div>
+`)
+                } else {
+                    example_tabs.push(`  <li role="presentation"><a href="#page${data[a].id}" role="tab" data-toggle="tab">${data[a].right_name}</a></li>`)
+                    $('.card').append(`
+<div class="card-body" id="page${data[a].id}" style="display:none"">
+    <div>
+        <div class="bcard-header">
+            <div class="left"></div>
+            <div class="right"></div>
+        </div>
+        <div class="bcard-body"></div>
+    </div>
+    <div class="bcard-foot"></div>
+</div>
+`)
+                }
+            }
+            //头部导航页 左侧
+            if (data[a].type_id == 5) {
+                $(`#page${data[a].parent} .left`).append(`<button class="btn btn-default" onclick="btn_func(${data[a].parent},'${data[a].right_name}',${data[a].id})">${data[a].right_name}</button>`)
+            }
+            //头部导航页 右侧
+            if (data[a].type_id == 6) {
+                $(`#page${data[a].parent} .right`).append(`<select id="sel_${data[a].id}"  class='form-control' onchange="change_select(${data[a].parent},sel_${data[a].id})"></select> `)
+                create_select(data[a].link, `#sel_${data[a].id}`)
+            }
+
+            //表格
+            if (data[a].type_id == 7) {
+                $(`#page${data[a].parent} .bcard-body`).append(`
+                    <table class="table table-bordered table-hover table-striped"><tr></tr></table>
+                `)
+                window.config[data[a].parent] = {'pid': data[a].parent, link: data[a].link, data: data, page: 1}
+                show_table(data[a].parent)
+            }
+        }
+        $('.card').append(card_body.join(''))
+        $('.nav').append(example_tabs.join(''))
+    }
+
+    // 增删改查点击事件
+    var btn_func = function (pid, type, id) {
+        console.log(pid, type, id)
+        var config = window.config[pid]
+        ids = get_checked(pid)
+        if (type == '查询') {
+            if (ids.length != 1) {
+                alert('查询只能选中一行')
+            } else {
+                var link = config_to_itme(config.data, id).link
+                $.ajax({
+                    url: url + link + ids[0],
+                    type: 'get',
+                    dataType: "json",
+                    contentType: "application/json;charset=utf-8",
+                    async: false,
+                    success: function (req) {
+                        if (req.code == 200) {
+                            modal_frame(req.data, type)
+                        }
+                    }
+                })
+            }
+        } else if (type == '删除') {
+
+        } else if (type == '修改') {
+
+        } else if (type == '增加') {
+
+        } else if (type == '筛选') {
+
+        }
+    }
+
+    //获得当前页面的权限设置
+    var get_setting = function () {
+        $.ajax({
+            url: url + '/v1/users/right?id=20',
+            type: 'get',
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            success: function (res) {
+                get_config(res.data)
+            },
+            error: function (q, w, e) {
+                console.log(q, w, e)
+            }
+        })
+    }
+
+    // 创建表格
+    var create_table = function (req, pid) {
+        var config = window.config[pid]
+        arr = []
+        arr.push(`<tr><td></td><th>${Object.values(req.header).join('</th><th>')}</th></tr>`)
+        for (var a = 0; a < req.data.length; a++) {
+            itme = Object.values(req.data[a])
+            arr.push(`<tr><td><input type="checkbox" name="favorite" value="${itme[0]}" /></td>`)
+            for (var b = 0; b < itme.length; b++) {
+                arr.push(`<td>${itme[b]}</td>`)
+            }
+            arr.push(`</tr>`)
+        }
+        $(`#page${config.pid} .bcard-body table`).html(arr.join(''))
+    }
+
+    //展示表格
+    var show_table = function (pid, param = "") {
+        var config = window.config[pid]
+
+        $.ajax({
+            url: url + config.link + config.page + param,
+            type: 'get',
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            // data: JSON.stringify({'id': arr}),
+            success: function (req) {
+                if (req.code == '200') {
+                    create_table(req, pid)
+                    create_pages(req, pid)
+                } else {
+                    alert(req.error)
+                }
+            },
+            error: function (q, w, e) {
+                console.log(q, w, e)
+            }
+        })
+    }
+
+    // 创建分页按钮
+    var create_pages = function (data, pid) {
+        var config = window.config[pid]
+        arr = ['<div></div><ul class="pagination">']
+        if (data.current > 1) {
+            str1 = `<li>
+                    <a href="#" aria-label="Previous" onclick="set_page(${data.current - 1},${pid})">
+                        <span aria-hidden="true">上一页</span>
+                    </a>
+                </li>`
+        } else {
+            str1 = `<li>
+                    <a class="activ" href="#" aria-label="Previous" >
+                        <span aria-hidden="true">上一页</span>
+                    </a>
+                </li>`
+        }
+        arr.push(str1)
+        for (var a = 0; a < data.pages; a++) {
+            if (data.current == a + 1) {
+                arr.push(`<li><a class="activ" >${a + 1}</a></li>`)
+            } else {
+                arr.push(`<li><a  href="#"  onclick="set_page(${a + 1},${pid})">${a + 1}</a></li>`)
+            }
+        }
+        if (data.current < data.pages) {
+            str2 = `<li>
+                        <a href="#" aria-label="Previous"  onclick="set_page(${data.current + 1},${pid})">
+                            <span aria-hidden="true">下一页</span>
+                        </a>
+                    </li></ul>`
+        } else {
+            str2 = `<li>
+                        <a  class="activ" href="#" aria-label="Previous">
+                           <span aria-hidden="true">下一页</span>
+                        </a>
+                    </li></ul>`
+        }
+        arr.push(str2)
+        $(`#page${config.pid} .bcard-foot`).html(arr.join(''))
+    }
+
+    //修改全局分页状态
+    var set_page = function (page, pid) {
+        window.config[pid].page = page
+        show_table(pid)
+    }
+
+    //分页点击事件
+    var click_bind = function () {
+        $('.nav').on('shown.bs.tab', 'a[data-toggle="tab"]', function (e) {
+            var target = $(e.target).attr('href').substr(1)
+            $("#" + target).show();
+            var relatedTarget = $(e.relatedTarget).attr('href').substr(1)
+            $("#" + relatedTarget).hide();
+        })
+    }
+
+    //获取选中
+    var get_checked = function (pid) {
+        arr = []
+        var checkId = $(`#page${pid} input[name='favorite']:checked`)
+        for (var a = 0; a < checkId.length; a++) {
+            arr.push(checkId[a].value)
+        }
+        return arr
+    }
+
+    //模态框
+    var modal_frame = function (data, type) {
+        console.log(data, type)
+    }
+
+    var create_select = function (link, el) {
+        $.ajax({
+            url: url + link,
+            type: 'get',
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            async: false,
+            success: function (req) {
+                if (req.code == 200) {
+                    arr = []
+                    for (var a = 0; a < req.data.length; a++) {
+                        arr.push(`<option value="${req.data[a].id}">${req.data[a].type_name}</option>`)
+                        // window.config[]
+
+                        // req.data
+                    }
+                    console.log(el)
+                    $(el).html(arr.join(''))
+                }
+            }
+        })
+    }
+
+    var change_select = function (pid, el) {
+        var config = window.config[pid]
+        config['page'] = 1
+        show_table(pid, `&type=${$(el).val()}`)
+    }
+    var config_to_itme = function (temp, id) {
+        for (var a = 0; a < temp.length; a++) {
+            if (temp[a].id == id) {
+                return temp[a]
+
+            }
+        }
+    }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+

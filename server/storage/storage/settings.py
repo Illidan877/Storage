@@ -35,9 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders',
-    'dict_con',
-    'users',
+    'base_dict',
     # 'commodity'
 ]
 
@@ -79,10 +77,10 @@ WSGI_APPLICATION = 'storage.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'storage',
+        'NAME': 'wwn',
         'USER': 'wwn',
-        'PASSWORD': 'zhengfuyiqie',
-        'HOST': '127.0.0.1',
+        'PASSWORD': '!234Qwer',
+        'HOST': '49.232.11.155',
         'PORT': 3306,
     }
 }

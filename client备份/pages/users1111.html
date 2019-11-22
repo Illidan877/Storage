@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
+<style>
+    #u0 li {
+        cursor: pointer;
+        width: 200px;
+    }
+
+    #u0 li:hover {
+        background: #000;
+        color: #fff;
+    }
+
+    .form-control {
+        width: 300px;
+    }
+
+    #main {
+        margin: 30px 0 0 30px;
+    }
+</style>
+<div id="main">
+    <div style="float: right;width:60%;">
+        <button id="add" class="btn">增</button>
+        <button id="del" class="btn">删</button>
+        <button id="upd" class="btn">改</button>
+        <button id="save" class="btn">保存</button>
+        <p>id: <input type="text" id="id" disabled="disabled" class="form-control"></p>
+        <p>父节点: <input type="text" id="pid" class="form-control"></p>
+        <p>名称: <input type="text" id="name" class="form-control"></p>
+        <p>序号:<input type="text" id="order" class="form-control"></p>
+        <p>类型: <select name="" id="type" class="form-control"></select>
+        <p>连接: <input type="text" id="link" class="form-control"></p>
+        <p>参数: <input type="text" id="params" class="form-control"></p>
+    </div>
+    <ul id="u0">
+    </ul>
+</div>
+
+
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script>
+    var get_treelist = function () {
+        $.ajax({
+            url: 'http://127.0.0.1:8000/v1/users/right',
+            type: 'get',
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            async: false,
+            success: function (req) {
+                window.treelist = req.data
+                window.maxid = 0
+                for (var a = 0; a < req.data.length; a++) {
+                    if (window.maxid < req.data[a].id) {
+                        window.maxid = req.data[a].id
+                    }
+                }
+            }
+        })
+    }
+    var get_type = function () {
+        $.ajax({
+            url: 'http://127.0.0.1:8000/v1/dict_con/type',
+            type: 'get',
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            async: false,
+            success: function (req) {
+                window.type = {}
+                arr = []
+                for (var a = 0; a < req.data.length; a++) {
+                    window.type[req.data[a].type_name] = req.data[a].id
+                    itme = `<option value="${req.data[a].id}">${req.data[a].type_name}</option>`
+                    arr.push(itme)
+                }
+                $("#type").html(arr.join(''))
+            }
+        })
+    }
+    var init = function () {
+        get_treelist()
+        get_type()
+        create_tree()
+        click_bind()
+    }
+    var create_tree = function () {
+        $(`#u0`).html("")
+        for (var a = 0; a < treelist.length; a++) {
+            $(`#u${treelist[a].parent}`).append(`<li id="${treelist[a].id}" ${treelist[a].right_name}" data-id="${treelist[a].id}" data-pid="${treelist[a].parent}" data-type="${treelist[a].type_id}" data-link="${treelist[a].link}"  data-name="${treelist[a].right_name}" data-order="${treelist[a].order}"  data-params="${treelist[a].params}">${treelist[a].right_name}
+            </li>
+               <ul id="u${treelist[a].id}"></ul>
+`)
+        }
+    }
+    var click_bind = function () {
+        $('#u0').on('click', 'li', function (e) {
+            $('#id').val($(e.target).attr('data-id'))
+            $('#type').val($(e.target).attr('data-type'))
+            $('#link').val($(e.target).attr('data-link'))
+            $('#pid').val($(e.target).attr('data-pid'))
+            $('#name').val($(e.target).attr('data-name'))
+            $('#order').val($(e.target).attr('data-order'))
+            $('#params').val($(e.target).attr('data-params'))
+            $(e.target).next().slideToggle(150)
+            e.stopPropagation();
+        })
+
+        $("#add").on('click', function () {
+            maxid++
+            treelist.push({
+                id: maxid,
+                link: $('#link').val(),
+                type_id: $('#type').val(),
+                right_name: $('#name').val(),
+                order: $('#order').val(),
+                parent: $('#id').val() || 0,
+                params: $('#params').val(),
+            })
+            create_tree()
+        })
+        $("#del").on('click', function () {
+            $.ajax({
+                url: 'http://127.0.0.1:8000/v1/users/right',
+                type: 'delete',
+                dataType: "json",
+                contentType: "application/json;charset=utf-8",
+                data: JSON.stringify({'id': $('#id').val()}),
+                success: function (req) {
+                    for (var a = 0; a < treelist.length; a++) {
+                        if (treelist[a].id == $('#id').val()) {
+                            treelist.splice(a, 1)
+                        }
+                    }
+                    create_tree()
+
+                }
+            })
+
+
+        })
+        $("#upd").on('click', function () {
+
+            for (var a = 0; a < treelist.length; a++) {
+                if (treelist[a].id == $('#id').val()) {
+                    treelist[a].type_id = $('#type').val()
+                    treelist[a].link = $('#link').val()
+                    treelist[a].right_name = $('#name').val()
+                    treelist[a].order = $('#order').val()
+                    treelist[a].parent = $('#pid').val()
+                    treelist[a].params = $('#params').val()
+                    console.log(treelist[a])
+                }
+            }
+            create_tree()
+        })
+        $("#save").on('click', function () {
+            console.log(treelist)
+            $.ajax({
+                url: 'http://127.0.0.1:8000/v1/users/right',
+                type: 'put',
+                dataType: "json",
+                contentType: "application/json;charset=utf-8",
+                data: JSON.stringify(treelist),
+                success: function (req) {
+                    if (req.code == '200') {
+                        alert('保存成功')
+                    }
+                }
+            })
+        })
+    }
+
+    $(document).ready(function () {
+        init()
+    })
+
+</script>
+</body>
+</html>
