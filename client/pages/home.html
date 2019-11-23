@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en" style="width:100%;height:100%;overflow: hidden">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body style="width:100%;height:100%">
+<div id="app" style="width:100%;height:100%">
+    <div id="mapChart" style="width:100%;height:100%;"></div>
+</div>
+<script src="../js/vue.js"></script>
+<script src="../js/echarts.min.js"></script>
+<script src="../js/word.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data(){
+            return {
+                mapName: '设备数',
+//todo mapData 注意：value前两位是经纬度！！！其他数据可追加其后 tooltip中显示 ==============
+                mapData: [{name: '中国航天科工集团公司总部', value: [116.4, 39.9, 120]},
+                    {name: '中国航天系统工程有限公司', value: [116.42, 39.93, 12]},
+                    {name: '中国航天科工防御技术研究院', value: [116.37, 39.92, 1]},
+                    {name: '中国航天科工飞航技术研究院', value: [116.43, 39.88, 120]},
+                    {name: '中国航天三江集团有限公司', value: [114.30, 30.23, 12]},
+                    {name: '中国航天科工动力技术研究院', value: [111.45, 41.32, 1]},
+                    {name: '中国航天建设集团有限公司', value: [116.35, 39.87, 120]},
+                    {name: '贵州航天工业有限责任公司', value: [106.42, 26.34, 12]},
+                    {name: '湖南航天有限责任公司', value: [113.45, 28.02, 1]},
+                    {name: '中国华腾工业有限公司', value: [116.43, 39.92, 1]},
+                    {name: '深圳航天工业技术研究院有限公司', value: [113.50, 22.45, 120]},
+                    {name: '中国航天汽车有限责任公司', value: [116.28, 39.85, 12]},
+                    {name: '航天云网科发展有限责任公司', value: [116.22, 39.9, 1]},
+                    {name: '河南航天工业有限责任公司', value: [113.23, 34.32, 120]},
+                    {name: '航天精工股份有限责任公司', value: [117.2, 39.12, 12]},
+                    {name: '航天医疗健康科技有限公司', value: [116.3, 39.95, 1]},
+                    {name: '航天科工财务有限责任公司', value: [116.1, 39.93, 120]},
+                    {name: '航天科工资产管理有限公司', value: [116.13, 39.97, 12]},
+                    {name: '航天信息股份有限公司', value: [116.65, 39.92, 1]},
+                    {name: '航天通信控股集团股份有限公司', value: [119.21, 29.45, 120]},
+                    {name: '航天晨光股份有限公司', value: [118.42, 31.44, 12]},
+                    {name: '航天工业发展股份有限公司', value: [119.28, 26.08, 1]},
+                    {name: '宏华集团有限公司', value: [103.31, 30.52, 0],}]
+            };
+        },
+        methods: {
+            drawMap: function () {
+                echarts.registerMap('world', worldJson);
+                var chinaGeoCoordMap = {
+                    '黑龙江': [127.9688, 45.368],
+                    '内蒙古': [110.3467, 41.4899],
+                    '吉林': [125.8154, 44.2584],
+                    '北京市': [116.4551, 40.2539],
+                    '辽宁': [123.1238, 42.1216],
+                    '河北': [114.4995, 38.1006],
+                    '天津': [117.4219, 39.4189],
+                    '山西': [112.3352, 37.9413],
+                    '陕西': [109.1162, 34.2004],
+                    '甘肃': [103.5901, 36.3043],
+                    '宁夏': [106.3586, 38.1775],
+                    '青海': [101.4038, 36.8207],
+                    '新疆': [87.9236, 43.5883],
+                    '西藏': [91.11, 29.97],
+                    '四川': [103.9526, 30.7617],
+                    '重庆': [108.384366, 30.439702],
+                    '山东': [117.1582, 36.8701],
+                    '河南': [113.4668, 34.6234],
+                    '江苏': [118.8062, 31.9208],
+                    '安徽': [117.29, 32.0581],
+                    '湖北': [114.3896, 30.6628],
+                    '浙江': [119.5313, 29.8773],
+                    '福建': [119.4543, 25.9222],
+                    '江西': [116.0046, 28.6633],
+                    '湖南': [113.0823, 28.2568],
+                    '贵州': [106.6992, 26.7682],
+                    '云南': [102.9199, 25.4663],
+                    '广东': [113.12244, 23.009505],
+                    '广西': [108.479, 23.1152],
+                    '海南': [110.3893, 19.8516],
+                    '上海': [121.4648, 31.2891],
+                    '香港': [114.12, 22.26],
+                    '澳门': [113.35, 22.14],
+                };
+                var chinaDatas = [
+                    [{name: '黑龙江', value: 0}],
+                    [{name: '内蒙古', value: 0}],
+                    [{name: '吉林', value: 0}],
+                    [{name: '辽宁', value: 0}],
+                    [{name: '河北', value: 0}],
+                    [{name: '天津', value: 0}],
+                    [{name: '山西', value: 0}],
+                    [{name: '陕西', value: 0}],
+                    [{name: '甘肃', value: 0}],
+                    [{name: '宁夏', value: 0}],
+                    [{name: '青海', value: 0}],
+                    [{name: '新疆', value: 0}],
+                    [{name: '西藏', value: 0}],
+                    [{name: '四川', value: 0}],
+                    [{name: '重庆', value: 0}],
+                    [{name: '山东', value: 0}],
+                    [{name: '河南', value: 0}],
+                    [{name: '江苏', value: 0}],
+                    [{name: '安徽', value: 0}],
+                    [{name: '湖北', value: 0}],
+                    [{name: '浙江', value: 0}],
+                    [{name: '福建', value: 0}],
+                    [{name: '江西', value: 0}],
+                    [{name: '湖南', value: 0}],
+                    [{name: '贵州', value: 0}],
+                    [{name: '广西', value: 0}],
+                    [{name: '海南', value: 0}],
+                    [{name: '上海', value: 0}],
+                    [{name: '香港', value: 0}],
+                    [{name: '澳门', value: 0}]
+                ];
+                var series = [];
+                var _this = this;
+                [
+                    ['北京市', chinaDatas]
+                ].forEach(function (item, i) {
+                    series.push(
+                        {
+                            type: 'effectScatter',
+                            coordinateSystem: 'geo',
+                            zlevel: 2,
+                            rippleEffect: {
+                                period: 4,
+                                brushType: 'stroke',
+                                scale: 3
+                            },
+                            label: {
+                                normal: {
+                                    show: true,
+                                    position: 'right',
+                                    offset: [5, 0],
+                                    formatter: function (params) {
+                                        return params.data.name;
+                                    },
+                                    fontSize: 13
+                                },
+                                emphasis: {
+                                    show: true
+                                }
+                            },
+                            symbol: 'circle',
+                            symbolSize: function (val) {
+                                return 3 + val[2] / 60;
+                            },
+                            color: '#37dfff',
+                            data: item[1].map(function (dataItem) {
+                                return {
+                                    name: dataItem[0].name,
+                                    value: chinaGeoCoordMap[dataItem[0].name].concat([dataItem[0].value])
+                                };
+                            }),
+                        },
+                        {
+                            type: 'scatter',
+                            coordinateSystem: 'geo',
+                            symbolSize: 20,
+                            color: '#F00',
+                            symbol: 'path://M100,0 L41.22,180.90 L195.10,69.09 L4.89,69.09 L158.77,180.90 z',
+                            data: [{
+                                name: '北京市',
+                                value: [116.4551, 40.2539, 0],
+                            }]
+                        },
+                        {
+                            type: 'scatter',
+                            coordinateSystem: 'geo',
+                            symbolSize: 16,
+                            color: '#FABC14',
+//todo symbol是点的样式   可替换   见给你的《矢量图》里面找一个合适的替换-------------
+                            symbol: 'path://M32 14h-3.154c-0.864-5.57-5.276-9.982-10.846-10.846v-3.154h-4v3.154c-5.57 0.864-9.982 5.276-10.846 10.846h-3.154v4h3.154c0.864 5.57 5.276 9.982 10.846 10.846v3.154h4v-3.154c5.57-0.864 9.982-5.276 10.846-10.846h3.154v-4zM24.776 14h-3.118c-0.603-1.705-1.953-3.056-3.658-3.658v-3.118c3.36 0.765 6.010 3.416 6.776 6.776zM16 18c-1.105 0-2-0.895-2-2s0.895-2 2-2c1.105 0 2 0.895 2 2s-0.895 2-2 2zM14 7.224v3.118c-1.705 0.603-3.056 1.953-3.658 3.658h-3.118c0.765-3.36 3.416-6.010 6.776-6.776zM7.224 18h3.118c0.603 1.705 1.953 3.056 3.658 3.658v3.118c-3.36-0.765-6.010-3.416-6.776-6.776zM18 24.776v-3.118c1.705-0.603 3.056-1.953 3.658-3.658h3.118c-0.765 3.36-3.416 6.010-6.776 6.776z',
+                            data: _this.mapData,
+                            label: {
+                                normal: {
+                                    //todo 这个是点上默认显示的信息 可隐藏-  show: false,------------
+                                    show: true,
+                                    position: 'top',
+                                    formatter: function (params) {
+                                        return params.data.value ? params.data.value[2] : 0;
+                                    },
+                                    fontSize: 13,
+                                    fontWeight: 600,
+                                    color: '#fb5e24'
+                                },
+                                emphasis: {
+                                    show: true
+                                }
+                            },
+                        }
+                    );
+                });
+
+                var option = {
+                    tooltip: {
+                        trigger: 'item',
+                        backgroundColor: '#0B416A',
+                        borderColor: '#37dfff',
+                        showDelay: 0,
+                        hideDelay: 0,
+                        enterable: true,
+                        transitionDuration: 0,
+                        extraCssText: 'z-index:100',
+                        formatter: function (params, ticket, callback) {
+//todo   这里是鼠标放在点上显示的数据     数据来源于mapData     自行拼接------------
+                            var res = '<span style=\'color:#fff;\'>' + params.name + '</span><br/>' + _this.mapName + ' ：' + params.value[2];
+                            return res;
+                        }
+                    },
+                    // backgroundColor: '#12273C',
+                    backgroundColor: '#343a40',
+                    geo: {
+                        map: 'world',
+                        zoom: 5,
+                        center: [104.2978515625, 35.8544921875],
+                        label: {
+                            emphasis: {
+                                show: false
+                            }
+                        },
+                        roam: true,
+                        itemStyle: {
+                            normal: {
+                                areaColor: '#343a40',
+                                // areaColor: '#12273C',
+                                borderColor: '#3EB0C9',
+                                borderWidth: 1
+                            },
+                            emphasis: {
+                                areaColor: '#4f575d',
+                                // areaColor: '#14384f',
+                                borderColor: '#40c1da',
+                                borderWidth: 1
+                            }
+                        },
+                        regions: [
+                            {
+                                name: 'China',
+                                itemStyle: {
+                                    normal: {
+                                        areaColor: '#343a40',
+                                        // areaColor: '#12273C',
+                                        borderColor: '#40c1da',
+                                        borderWidth: 2,
+                                    },
+                                    emphasis: {
+                                        areaColor: '#4f575d',
+                                        // areaColor: '#14384f',
+                                        borderColor: '#40c1da',
+                                        borderWidth: 4
+                                    }
+                                }
+
+                            }
+                        ]
+                    },
+                    series: series
+                };
+                var myChart = echarts.init(document.getElementById('mapChart'));
+                myChart.setOption(option);
+                window.addEventListener('resize', () => {
+                    myChart.resize();
+                });
+
+                myChart.on('dblclick', (e) => {
+                    if (e.event.type == 'dblclick') {
+//todo 双击击了地图哦========================================
+                        console.log(e, '双击击了地图哦====');
+                    }
+                });
+                myChart.on('click', (e) => {
+                    if (e.event.type == 'click') {
+                        console.log(e, '单击击了地图哦====');
+                    }
+                });
+            },
+        },
+        mounted() {
+            this.drawMap();
+        }
+    });
+</script>
+</body>
+</html>

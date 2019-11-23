@@ -48,10 +48,12 @@
 </div>
 
 <script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../config.js"></script>
+
 <script>
     var get_treelist = function () {
         $.ajax({
-            url: 'http://127.0.0.1:8000/v1/base_dict/jurisdiction?type=1',
+            url: PATHURL + '/v1/base_dict/jurisdiction?type=1',
             type: 'get',
             dataType: "json",
             contentType: "application/json;charset=utf-8",
@@ -69,7 +71,7 @@
     }
     var get_type = function () {
         $.ajax({
-            url: 'http://127.0.0.1:8000/v1/base_dict/type?pid=1',
+            url: PATHURL + '/v1/base_dict/type?pid=1',
             type: 'get',
             dataType: "json",
             contentType: "application/json;charset=utf-8",
@@ -128,7 +130,7 @@
         })
         $("#del").on('click', function () {
             $.ajax({
-                url: 'http://127.0.0.1:8000/v1/base_dict/jurisdiction',
+                url: PATHURL + '/v1/base_dict/jurisdiction',
                 type: 'delete',
                 dataType: "json",
                 contentType: "application/json;charset=utf-8",
@@ -158,7 +160,7 @@
         })
         $("#save").on('click', function () {
             $.ajax({
-                url: 'http://127.0.0.1:8000/v1/base_dict/jurisdiction',
+                url: PATHURL + '/v1/base_dict/jurisdiction',
                 type: 'put',
                 dataType: "json",
                 contentType: "application/json;charset=utf-8",

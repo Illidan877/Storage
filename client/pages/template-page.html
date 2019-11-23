@@ -65,7 +65,8 @@
 <script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 <script>
     let pid = window.location.href.split('?page=')[1];
-    const PATHURL = "http://127.0.0.1:8000"
+    const PATHURL = "http://192.168.0.102:8000"
+
     let tab_page = 1
     let table_data = ''
     let server_dict = {"link": '', 'type': '', 'data': ''}
@@ -75,7 +76,7 @@
 
     var get_ofroles = function (pid) {
         $.ajax({
-            url: 'http://127.0.0.1:8000/v1/base_dict/jurisdiction?pid=' + pid,
+            url: PATHURL + '/v1/base_dict/jurisdiction?pid=' + pid,
             type: 'get',
             dataType: "json",
             contentType: "application/json;charset=utf-8",

@@ -72,10 +72,11 @@
 </div>
 
 <script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../config.js"></script>
 <script>
     var get_treelist = function () {
         $.ajax({
-            url: 'http://127.0.0.1:8000/v1/base_dict/jurisdiction?type=1',
+            url: PATHURL + '/v1/base_dict/jurisdiction?type=1',
             type: 'get',
             dataType: "json",
             contentType: "application/json;charset=utf-8",
@@ -102,11 +103,10 @@
 
     var get_ofroles = function () {
         $.ajax({
-            url: 'http://127.0.0.1:8000/v1/base_dict/ofroles',
+            url: PATHURL + '/v1/base_dict/ofroles',
             type: 'get',
             dataType: "json",
             contentType: "application/json;charset=utf-8",
-            async: false,
             success: function (req) {
                 if (req.code == 200) {
                     var arr = []
@@ -138,7 +138,7 @@
         })
         $('#add').on('click', function () {
             $.ajax({
-                url: 'http://127.0.0.1:8000/v1/base_dict/ofroles',
+                url: URLPATH + '/v1/base_dict/ofroles',
                 type: 'post',
                 dataType: "json",
                 data: JSON.stringify({'name': prompt('请输入姓名')}),
@@ -157,7 +157,7 @@
 
         $('#del').on('click', function () {
             $.ajax({
-                url: 'http://127.0.0.1:8000/v1/base_dict/ofroles',
+                url: URLPATH + '/v1/base_dict/ofroles',
                 type: 'delete',
                 dataType: "json",
                 data: JSON.stringify({'id': $('input:radio:checked').val()}),
@@ -191,7 +191,7 @@
             })
 
             $.ajax({
-                url: 'http://127.0.0.1:8000/v1/base_dict/ofroles',
+                url: URLPATH + '/v1/base_dict/ofroles',
                 type: 'put',
                 dataType: "json",
                 data: JSON.stringify({
@@ -199,7 +199,6 @@
                     'roleof': JSON.stringify(data)
                 }),
                 contentType: "application/json;charset=utf-8",
-                async: false,
                 success: function (req) {
                     if (req.code == 200) {
                         alert('修改成功')

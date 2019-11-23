@@ -1,0 +1,291 @@
+/*ElenentUI样式重写*/
+.el-table th,
+.el-table tr {
+    background-color: #012030;
+}
+
+.el-table td, .el-table th.is-leaf {
+    border-bottom: 1px solid #3a6579;
+}
+
+.el-table--border td, .el-table--border th, .el-table__body-wrapper .el-table--border.is-scrolling-left ~ .el-table__fixed {
+    border-right: 1px solid #3a6579;
+}
+
+.el-table--border, .el-table--group {
+    border: 1px solid #3a6579;
+}
+
+.el-table--border::after, .el-table--group::after {
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 100%;
+}
+
+.el-table::before {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0;
+}
+
+.el-table__body tr.current-row > td {
+    background-color: #063249;
+}
+
+.el-table--striped .el-table__body tr.el-table__row--striped td {
+    background: #012030;
+}
+
+.el-table--border.el-loading-parent--relative {
+    border-color: #3a6579;
+}
+
+.el-loading-mask {
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.el-table__empty-block {
+    background: #02121b;
+}
+
+.el-table--striped .el-table__body tr.el-table__row--striped.current-row td,
+.el-table--enable-row-hover .el-table__body tr:hover > td {
+    background-color: #083248;
+}
+.el-table, .el-table__expanded-cell {
+    background-color: #091922;
+}
+
+.el-table::after, .el-table::before {
+    z-index: 1;
+    background:transparent!important;
+}
+.el-table__body-wrapper.is-scrolling-none::-webkit-scrollbar,
+.el-transfer-panel__list.is-filterable::-webkit-scrollbar,
+.el-tabs .el-tabs__content .el-table::-webkit-scrollbar,
+.el-tabs .el-tabs .el-tabs__content .el-table::-webkit-scrollbar,
+.el-tabs__content::-webkit-scrollbar,
+.el-textarea__inner::-webkit-scrollbar,
+.fc-scroller::-webkit-scrollbar,
+.com-scrollbar::-webkit-scrollbar {
+    height: 100%;
+    width: 5px;
+}
+
+.el-table__body-wrapper.is-scrolling-none::-webkit-scrollbar-track,
+.el-transfer-panel__list.is-filterable::-webkit-scrollbar-track,
+.el-tabs .el-tabs__content .el-table::-webkit-scrollbar-track,
+.el-tabs .el-tabs .el-tabs__content .el-table::-webkit-scrollbar-track,
+.el-tabs__content::-webkit-scrollbar-track,
+.fc-scroller::-webkit-scrollbar-track,
+.el-textarea__inner::-webkit-scrollbar-track,
+.com-scrollbar::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.el-table__body-wrapper.is-scrolling-none::-webkit-scrollbar-thumb,
+.el-transfer-panel__list.is-filterable::-webkit-scrollbar-thumb,
+.el-tabs .el-tabs__content .el-table::-webkit-scrollbar-thumb,
+.el-tabs .el-tabs .el-tabs__content .el-table::-webkit-scrollbar-thumb,
+.el-tabs__content::-webkit-scrollbar-thumb,
+.com-second-card .el-tabs__content::-webkit-scrollbar-thumb,
+.fc-scroller::-webkit-scrollbar-thumb,
+.el-textarea__inner::-webkit-scrollbar-thumb,
+.com-scrollbar::-webkit-scrollbar-thumb {
+    background: #0079d3;
+}
+.el-dialog__wrapper {
+    overflow: hidden;
+}
+
+.el-dialog__footer,
+.el-dialog__header {
+    padding: 10px;
+    background: #063c58;
+}
+
+.el-pagination__total,
+.el-pagination__jump {
+    color: #fff;
+}
+
+.el-input__inner {
+    background-color: #012030;
+    border: 1px solid #3a6579;
+    color: #fff;
+}
+
+.el-select:hover .el-input__inner,
+.el-input__inner:hover {
+    border-color: #2578ab;
+}
+
+.el-input.is-active .el-input__inner,
+.el-input__inner:focus,
+.el-select .el-input.is-focus .el-input__inner {
+    border-color: #036090;
+    outline: 0;
+}
+
+.el-select-dropdown {
+    border: 1px solid #0e4f71;
+    background-color: #012030;
+}
+
+.el-select-dropdown__item.hover, .el-select-dropdown__item:hover {
+    background-color: #154157;
+}
+
+.el-pagination button:disabled {
+    color: #C0C4CC;
+    background-color: #154157;
+    cursor: not-allowed;
+}
+
+.el-dialog, .el-pager li {
+    background: #0e4f71;
+}
+
+.el-pagination {
+    margin-top: 8px;
+}
+
+.el-button {
+    background: #295469;
+    border: 1px solid #0e4f71;
+    color: #606266;
+    height: 40px;
+}
+
+.el-button:focus, .el-button:hover {
+    border-color: #0e4f71;
+    background-color: #255168;
+}
+
+.el-button--primary {
+    color: #FFF;
+    background-color: #0e4f71;
+    border-color: #3a6579;
+}
+
+.el-button--primary:focus, .el-button--primary:hover {
+    background: #146690;
+    border-color: #1780b7;
+    color: #FFF;
+}
+
+.el-message-box {
+    background-color: #032e48;
+    border: 1px solid #09598a;
+}
+
+.el-form-item__label{
+    color: #fff;
+    font-size: 16px;
+}
+
+.el-dialog__title {
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+.el-dialog__body {
+    padding: 10px 20px 20px 20px;
+}
+
+.el-select {
+    width: 100%;
+}
+
+.el-form-item {
+    margin-bottom: 0;
+}
+
+/*本系统自定义共用样式*/
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background: #012030;
+}
+
+html * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: #fff;
+    font-size: 16px;
+}
+
+ul, li {
+    list-style: none;
+}
+
+#home .el-menu-item {
+    font-size: 16px;
+}
+
+#home .el-menu.el-menu--horizontal {
+    border-bottom: solid 1px #39638f;
+}
+
+#app {
+    width: 100%;
+    height: 100%;
+}
+
+[v-cloak] {
+    display: none;
+}
+
+.com-my-loading {
+    position: absolute;
+    font-size: 16px;
+    color: #096;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    top: 36px;
+    width: 100%;
+    height: calc(100% - 36px);
+}
+
+.com-my-loading i {
+    color: #096;
+}
+
+.com-scrollbar::-webkit-scrollbar-thumb {
+    background: #0079d3;
+}
+
+.com-scrollbar {
+    overflow-y: auto;
+}
+
+.com-scrollbar::-webkit-scrollbar {
+    height: 100%;
+    width: 5px;
+}
+
+.com-scrollbar::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+@font-face {
+    font-family: 'ds-digitalnormal';
+    src: url('../css/fonts/ds-digi-webfont.woff2') format('woff2')
+}
+
+.com-led {
+    font-family: 'ds-digitalnormal';
+}
+
+
+
+
+

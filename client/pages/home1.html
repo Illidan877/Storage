@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>总览</title>
+    <link rel="stylesheet" href="../css/element-ui.css" type="text/css">
+    <link rel="stylesheet" href="../css/font-awesome.css" type="text/css">
+    <link rel="stylesheet" href="../css/comCss.css" type="text/css">
+    <style>
+        #app {
+            display: flex;
+        }
+
+        .main-left {
+            width: 310px;
+            background: #343a40;
+            /*background: #02263A;*/
+            height: 100%;
+            padding: 10px;
+        }
+
+        .main-right {
+            width: calc(100% - 320px);
+            margin-left: 10px;
+            /*background: #02263A;*/
+            background: #343a40;
+            height: 100%;
+            padding: 10px;
+            position: relative;
+        }
+
+        .main-left .container-total {
+            height: 120px;
+            border-bottom: 1px solid #0E476A;
+        }
+
+        .main-left .container-total ul {
+            width: 300px;
+            height: 60px;
+            display: flex;
+        }
+
+        .main-left .container-total ul li {
+            background: url('../img/bg_num.png') no-repeat;
+            background-size: 100% 100%, 100% 100%;
+            margin: 5px;
+            text-align: center;
+            font-size: 44px;
+            padding-top: 4px;
+            color: #0be1fc;
+        }
+
+        .main-left .container-total .title {
+            font-size: 20px;
+            letter-spacing: 3px;
+            position: relative;
+            top: -17px;
+            display: inline-block;
+            width: 200px;
+            text-align: center;
+            color: #0be1fc;
+        }
+
+        .main-left .container-num-others {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            height: calc(100% - 115px)
+        }
+
+        .main-left .container-num-others p.bg-num {
+            background: url('../img/bg_num1.png') no-repeat;
+            background-size: 100% 100%, 100% 100%;
+            margin: 5px;
+            text-align: center;
+            font-size: 28px;
+            padding: 10px;
+            letter-spacing: 2px;
+        }
+
+        .main-left .container-num-others .title {
+            font-size: 17px;
+            letter-spacing: 2px;
+        }
+
+        .main-right .title-model {
+            font-size: 18px;
+            height: 30px;
+            line-height: 30px;
+            letter-spacing: 2px;
+            padding-left: 10px;
+            border-left: 5px solid #0be1fc;
+            margin: 10px;
+            color: #0be1fc;
+        }
+
+        .main-right .container-news {
+            height: calc(100% - 55px);
+            padding: 0 20px 20px 20px;
+            overflow: hidden;
+        }
+
+        .main-right .container-news .title {
+            text-align: center;
+            color: #e8691c;
+            font-size: 16px;
+        }
+
+        .main-right .container-news li,
+        .main-right .container-news span {
+            color: #fff;
+        }
+
+        .main-right .container-news.out-line li,
+        .main-right .container-news.out-line span,
+        .main-right .container-news.out-line .title {
+            color: #5c5c5c;
+        }
+
+        .main-right .container-news .time {
+            color: #74becf;
+            padding-right:10px;
+        }
+
+        .main-right .container-news li {
+            padding: 10px;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="app">
+    <div class="main-left">
+        <!--总资产数量-->
+        <div class="container-total">
+            <div>
+                <img src="../img/icon_property.png">
+                <span class="title">总资产数量</span>
+            </div>
+            <ul>
+                <li v-for="item in num_num1" v-text="item" class="com-led"
+                    :style="{width:Math.floor((300 - 10*(num_num1.length + 1))/num_num1.length)+'px'}"></li>
+            </ul>
+        </div>
+        <!--其他资产数量-->
+        <ul class="container-num-others">
+            <li v-for="item in arr_numbers">
+                <p class="title" v-text="item.name"></p>
+                <p class="bg-num com-led" v-text="item.num"></p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="main-right">
+        <div style="display:flex;border-bottom: 10px solid #012030;height:320px;">
+            <div id="chart1" style="width:35%;height:100%;"></div>
+            <p class="com-my-loading" v-if="bool_loadingChart1" style="width:33%;height:300px;">数据加载中... <i
+                    class="el-icon-loading"></i></p>
+
+            <div id="chart2"
+                 style="width:30%;height:100%;border-left: 10px solid #012030;border-right: 10px solid #012030;"></div>
+            <p class="com-my-loading" v-if="bool_loadingChart2" style="width:33%;height:300px;left:35%;">数据加载中... <i
+                    class="el-icon-loading"></i></p>
+
+            <div id="chart3" style="width:35%;height:100%;"></div>
+            <p class="com-my-loading" v-if="bool_loadingChart3" style="width:35%;height:300px;left:65%;">数据加载中... <i
+                    class="el-icon-loading"></i></p>
+
+        </div>
+        <div style="height:calc(100% -  310px);display: flex;">
+            <div style="width:60%;height:100%;border-right: 10px solid #012030;">
+                <p class="title-model">xxxx 分析</p>
+                <div id="chart4" style="height:calc(100% - 50px)"></div>
+                <p class="com-my-loading" v-if="bool_loadingChart4"
+                   style="width:60%; height:calc(100% - 310px);top:310px">数据加载中... <i
+                        class="el-icon-loading"></i></p>
+            </div>
+            <div style="width:40%;">
+                <p class="title-model">最新消息</p>
+                <div class="container-news">
+                    
+            
+                <ul style="height:100%;" ref="slider" @mouseover="over" @mouseout.stop="out">
+                    <li v-for="item in arr_news">
+                        <span v-text="item.time" class="time"></span>
+                        <span v-text="item.info"></span>
+                    </li>
+                </ul>
+                </div>
+                <p class="com-my-loading" v-if="bool_loadingNews"
+                   style="width:38%; height:calc(100% - 310px);left:60%;top:310px;">数据加载中... <i
+                        class="el-icon-loading"></i></p>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/vue.js"></script>
+<script src="../js/element-ui.min.js"></script>
+<script src="../js/echarts.min.js"></script>
+<script src="../js/echart_pie.js"></script>
+<script src="../js/echart_line.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data(){
+            return {
+                //左侧 - 统计数量
+                num_num1: 0,
+                arr_numbers: [],
+                //右侧 - 可视化图 加载loading状态
+                bool_loadingChart1: false,
+                bool_loadingChart2: false,
+                bool_loadingChart3: false,
+                bool_loadingChart4: false,
+                //右下角 - 消息
+                bool_loadingNews: false,
+                margin:0,
+                arr_news: []
+            };
+        },
+        methods: {
+            //todo -- 获取左侧展示的统计数量
+            getNum: function () {
+                setTimeout(() => {
+                    let num = 56517;
+                    this.num_num1 = ('' + num).split(''); // 注：数字类型转为数组
+
+                    this.arr_numbers = [
+                        {name: '测试数量', num: 365},
+                        {name: 'YYYYyyyyy数量', num: 1245},
+                        {name: 'vvv数量', num: 3},
+                        {name: 'kkkkkkk数量', num: 23235444},
+                        {name: 'xxx数量', num: 365},
+                        {name: '未入库资产数量', num: 1245},
+                    ];
+                }, 500);
+            },
+            //todo --获取右侧图数据     注：图一 图二 为同体组件  只是参数不同 见： chartParams
+            drawChart1: function (chartData, totalData) {
+                var myChart = echarts.init(document.getElementById('chart1'));
+                var chartParams = {
+                    chartData: chartData,
+                    totalData: totalData,
+                    colors: ['#2ABB9C',
+                        '#dda377']
+                };
+                myChart.setOption(echartPie(chartParams));
+                window.addEventListener('resize', () => {
+                    myChart.resize();
+                });
+            },
+            getChart1: function () {
+                this.bool_loadingChart1 = true;
+                setTimeout(() => {
+                    this.bool_loadingChart1 = false;
+                    var loopCircularData = [
+                        {name: '已处理数', value: 452},
+                        {name: '未处理数', value: 321}
+                    ];
+                    var loopTotalData = {
+                        name: 'XXx总数',
+                        value: 773
+                    };
+                    this.drawChart1(loopCircularData, loopTotalData);
+                }, 800);
+            },
+
+            drawChart2: function (chartData, totalData) {
+                var myChart = echarts.init(document.getElementById('chart2'));
+                var chartParams = {
+                    chartData: chartData,
+                    totalData: totalData,
+                    isLine: 'false',
+                    isLegend: true,
+                };
+                myChart.setOption(echartPie(chartParams));
+                window.addEventListener('resize', () => {
+                    myChart.resize();
+                });
+            },
+            getChart2: function () {
+                this.bool_loadingChart2 = true;
+                setTimeout(() => {
+                    this.bool_loadingChart2 = false;
+                    var circularData = [
+                        {name: '已审核数', value: 124},
+                        {name: '未审核数', value: 6}
+                    ];
+                    var totalData = {
+                        name: '测试22总数',
+                        value: 130
+                    };
+                    this.drawChart2(circularData, totalData);
+                }, 1000);
+            },
+
+            drawChart3: function (chartData, totalData) {
+                var myChart = echarts.init(document.getElementById('chart3'));
+                var chartParams = {
+                    chartData: chartData,
+                    totalData: totalData,
+                    colors: ['#2ABB9C',
+                        '#dda377']
+                };
+                myChart.setOption(echartPie(chartParams));
+                window.addEventListener('resize', () => {
+                    myChart.resize();
+                });
+            },
+            getChart3: function () {
+                this.bool_loadingChart3 = true;
+                setTimeout(() => {
+                    this.bool_loadingChart3 = false;
+                    var loopCircularData = [
+                        {name: '已处理数', value: 23},
+                        {name: '未处理数', value: 89}
+                    ];
+                    var loopTotalData = {
+                        name: 'X总数',
+                        value: 102
+                    };
+                    this.drawChart3(loopCircularData, loopTotalData);
+                }, 1500);
+            },
+
+            drawChart4: function (chartData,) {
+                var myChart = echarts.init(document.getElementById('chart4'));
+                var chartParams = {
+                    chartData: chartData
+                };
+                myChart.setOption(echartLine(chartParams));
+                window.addEventListener('resize', () => {
+                    myChart.resize();
+                });
+            },
+            getChart4: function () {
+                this.bool_loadingChart4 = true;
+                setTimeout(() => {
+                    this.bool_loadingChart4 = false;
+                    var data = {
+                        data: [12, 25, 36, 21, 2, 56, 0, 0, 54, 23, 21, 12, 41, 25, 23, 2, 2, 36, 6, 5, 45, 63, 23, 54, 25, 32, 14, 45, 78, 21],
+                        xAxisData: ['9.1', '9.2', '9.3', '9.4', '9.5', '9.6', '9.7', '9.8', '9.9', '9.10',
+                            '9.11', '9.12', '9.13', '9.14', '9.15', '9.16', '9.17', '9.18', '9.19', '9.20',
+                            '9.21', '9.22', '9.23', '9.24', '9.25', '9.26', '9.27', '9.28', '9.29', '9.30',]
+                    };
+                    this.drawChart4(data);
+                }, 1800);
+            },
+            //右下 - 消息自动播放
+            autoPlay: function () {
+                if (this.arr_news.length > 10) {
+                    const slider = this.$refs.slider;
+                    if (slider) {
+                        let currentNodeHeight = slider.firstChild ? slider.firstChild.clientHeight + 5 : 1;
+                        clearInterval(this.timer);
+                        this.timer = setInterval(() => {
+                            if (-this.margin === currentNodeHeight) {
+                                const node = slider.firstChild;
+                                slider.removeChild(node);
+                                slider.appendChild(node);
+                                this.margin = -5;
+                                currentNodeHeight = slider.firstChild.clientHeight + 5;
+                            }
+                            this.margin -= 1;
+                            slider.style.marginTop = this.margin + 'px';
+                        }, 50);
+                    }
+                }
+            },
+            over: function () {
+                clearInterval(this.timer);
+                this.timer = null;
+            },
+            out: function () {
+                if (this.arr_news.length > 10) {
+                    this.autoPlay();
+                }
+            },
+            getNews: function () {
+                this.bool_loadingNews = true;
+                setTimeout(() => {
+                    this.bool_loadingNews = false;
+                    this.arr_news = [
+                        {time: '2019-11-01', info: '这里是一条新消息1111 /// 测试数据，测试数据'},
+                        {time: '2019-11-02', info: '当条数大于 n 时开始滚动 // 测试数据，测试数据测试数据，测试数据'},
+                        {time: '2019-11-03', info: '由于每条消息长度不同，故n值需手动设置'},
+                        {time: '2019-11-04', info: '注：n默认为10'},
+                        {time: '2019-11-05', info: '注：n默认修改见 autoPlay ，out 两方法'},
+                        {time: '2019-11-06', info: '------------**------------'},
+                        {time: '2019-11-07', info: '这里是一条新消息1111 /// 测试数据，测试数据'},
+                        {time: '2019-11-08', info: '当条数大于 n 时开始滚动 // 测试数据，测试数据测试数据，测试数据'},
+                        {time: '2019-11-10', info: '由于每条消息长度不同，故n值需手动设置'},
+                        {time: '2019-11-11', info: '注：n默认为10'},
+                        {time: '2019-11-12', info: '注：n默认修改见 autoPlay ，out 两方法'},
+                    ];
+                    this.autoPlay();
+                }, 2000);
+
+            }
+        },
+        mounted() {
+            this.getNum();
+            this.getChart1();
+            this.getChart2();
+            this.getChart3();
+            this.getChart4();
+            this.getNews();
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,1471 @@
+@color-main: #53a3f0;
+@color-blue-1: #41ceff;
+@color-green-1: #5ccbc1;
+@color-red-1: #d48265;
+@color-red-2: #ddac68;
+@color-white: #fff;
+@color-dark-1: rgba(0, 94, 164, 0.1);
+@color-dark-2: rgba(2, 36, 76, 0.45);
+
+.KPI-container {
+  color: @color-white;
+  //height: calc(100% - 15px)!important;
+  width: calc(100% - 15px);
+  padding: 0 0 0 15px;
+  height: calc(100% - 60px);
+  //margin-top: 30px;
+  p.title {
+    border-left: 3px solid @color-main;
+    background: rgba(14, 152, 219, 0.17);
+    letter-spacing: 2px;
+    width: calc(100% - 34px);
+    font-size: 16px;
+    margin: 10px 10px 2px 10px;
+    padding: 3px 0 3px 10px;
+  }
+  p.title .more {
+    color: @color-green-1;
+    margin-right: 10px;
+    float: right;
+    cursor: pointer;
+  }
+  p.title .more:hover {
+    color: @color-red-1;
+  }
+  .el-table--striped .el-table__body tr:nth-child(2n) td {
+    background: @color-dark-1;
+  }
+
+}
+
+/*边框渐变色，四个角图片*/
+.com-border-blue,
+.com-border-blue-top,
+.com-border-blue-bottom,
+.com-border-blue-left,
+.com-border-blue-right,
+.com-border-blue-mid,
+.com-border-blue-top-left,
+.com-border-blue-top-right,
+.com-border-blue-bottom-left,
+.com-border-blue-bottom-right {
+  background-image: url('../img/B-t-l.png'), url('../img/B-t-r.png'),
+  url('../img/B-b-l.png'), url('../img/B-b-r.png');
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+  background-position: 0 0, 100% 0, 0 100%, 100% 100%;
+  position: relative;
+  background: #0f384a;
+  padding-top:10px;
+
+}
+
+p::selection, div::selection, span::selection, i::selection, img::selection {
+  background-color: transparent;
+}
+
+.com-tooltip-bg {
+  background-color: @color-dark-2;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  transform: scale(0);
+  transition: all 0.5s;
+}
+
+.com-tooltip-bg div.detailView {
+  min-height: 100px;
+  position: fixed;
+  top: 5vh;
+  width: 50vw;
+  right: 25vw;
+  background: rgba(11, 35, 111, .8);
+  z-index: 9;
+  border: 1px solid #3085d0;
+  border-radius: 6px;
+  color: @color-white;
+  height: 57vh;
+}
+
+.com-tooltip-bg div.detailView .wait-close {
+  position: absolute;
+  top: -6px;
+  right: -9px;
+  font-size: 16px;
+  color: @color-white;
+  transform: scale(1);
+  cursor: pointer;
+  z-index: 9;
+}
+
+.com-tooltip-bg div.detailView .wait-close:hover {
+  transform: scale(1.3);
+  color: @color-blue-1
+}
+
+.com-unit-K {
+  font-family: serif !important;
+  padding-left: 5px;
+  font-size: 24px !important;
+}
+
+.com-title-middle {
+  background: url('../img/block-bg.png') no-repeat;
+  background-size: 100% 100%;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  width: 500px;
+  height: 50px;
+  line-height: 55px;
+  cursor: pointer;
+  position: fixed;
+  top: -4px;
+  left: calc(50% - 250px);
+  letter-spacing: 3px;
+  color: #fff;
+  z-index: 1;
+}
+
+/*原安管样式*/
+@color-8: #66BADF;
+@color-9: #41CEFF;
+@color-1: #46B5F0;
+@color-17: #20a0ff;
+@color-14: #2396d1;
+@color-text-blue: #448aff;
+@color-3: #0079d3;
+@color-primary: #287dd0;
+@color-7: #2371a9;
+@color-2: #176ABB;
+@color-4: #034788;
+@color-19: rgba(0, 94, 164, .6);
+@color-5: rgba(4, 66, 128, .9);
+@color-6: rgba(4, 66, 128, .7);
+@color-hover-bg: rgba(26, 55, 92, 0.94);
+@color-11: rgba(23, 62, 110, .5);
+@color-input-inner: #273649;
+@color-10: rgba(26, 89, 168, .1);
+@color-card-bg: rgba(2, 36, 76, 0.45);
+@color-12: #1a3254;
+@color-15: #0d2d6b;
+//@color-13: #0A2746;
+@color-13: #05325d;
+@color-16: #081956;
+@color-18: rgba(9, 17, 31, 1);
+@color-deep-bg: rgba(9, 17, 31, 0.9);
+@color-01: #C7941C;
+@color-02: #EBA604;
+@color-04: #E4BD54;
+@color-03: #FFE342;
+@color-010: #d9534f;
+@color-red: #ce4a4a;
+@color-orange: #f69a2d; //真正的橘色是#ffa500
+@color-green: #99cd5f;
+@color-blue: #398fcf;
+@color-gray: #9f9f9f;
+@color-light-gray: #cecfd0;
+@color-white: #fff;
+@color-111: #fff;
+@color-000: #a0a8b1;
+@color-002: #56636b;
+@color-003: #46545b;
+@color-disabled: rgba(240, 240, 240, 0.12);
+@color-001: #3E4147;
+@color-004: #333;
+@color-006: rgba(0, 0, 0, .04);
+@color-005: rgba(0, 0, 0, .12);
+@color-darker-bg: rgba(0, 0, 0, .25);
+@color-transparent: rgba(0, 0, 0, 0);
+@color-bg: rgb(10, 13, 28);
+
+.form-border-style {
+  border: 1px solid #0079d3;
+  width: 330px;
+}
+
+.border-right-style {
+  border: 1px solid #0079d3;
+}
+
+//todo 公共-------------------------------------
+
+.container {
+  background-color: @color-bg;
+  background-size: 100% 100%;
+}
+
+.container .main aside {
+  background: @color-darker-bg;
+}
+
+.container .main .content-container {
+  background: @color-transparent;
+}
+
+.container .main .content-container .content-wrapper {
+  background: @color-transparent;
+}
+
+.device-content-box .device-content-left {
+
+  .device-type-card {
+    background: @color-transparent;
+  }
+}
+
+.el-menu {
+  background: @color-18;
+}
+
+.el-menu-item:hover,
+.el-menu-item:focus {
+  background: @color-hover-bg
+}
+
+.el-menu--horizontal .el-menu-item:hover,
+.el-menu--horizontal .el-submenu__title:hover {
+  background: @color-transparent;
+  color: @color-111;
+}
+
+.el-menu--horizontal.el-menu--dark .el-submenu .el-menu-item.is-active,
+.el-menu-item.is-active {
+  background: @color-001;
+}
+
+.el-menu--horizontal > .el-menu-item:not(.is-disabled):hover,
+.el-menu--horizontal > .el-menu-item:not(.is-disabled):focus {
+  background: @color-hover-bg
+}
+
+.el-submenu .el-menu {
+  background: @color-18
+}
+
+.el-submenu .el-menu-item:hover, .el-submenu__title:hover {
+  background: @color-001;
+}
+
+.el-table {
+  background: @color-transparent;
+  border: 1px solid @color-001;
+  color: @color-111;
+}
+
+.toolbar, .toolbar-footer, .common-toolbar-footer {
+  background: @color-transparent;
+}
+
+.el-table--striped .el-table__body tr:nth-child(2n) td {
+  background: @color-19;
+}
+
+.el-table--striped .el-table__body tr:nth-child(2n+1) td {
+  background: @color-6;
+}
+
+.el-table--striped .el-table__body tr:nth-child(2n).current-row td {
+  background: @color-hover-bg;
+}
+
+.el-table--striped .el-table__body tr:nth-child(2n+1).current-row td {
+  background: @color-hover-bg;
+}
+
+.el-table__body tr.hover-row > td {
+  background: @color-hover-bg;
+}
+
+.el-table__body tr.current-row > td {
+  background: @color-hover-bg;
+}
+
+.el-table--enable-row-hover .el-table__body tr:hover > td {
+  background: @color-hover-bg;
+}
+
+.el-table th, .el-table th > div {
+  background: @color-transparent;
+  color: @color-111
+}
+
+.el-table td, .el-table th.is-leaf {
+  border-bottom: 1px solid @color-disabled
+}
+
+.el-table tr {
+  background: @color-card-bg;
+}
+
+.el-table__fixed, .el-table__fixed-right {
+  box-shadow: 1px 0 8px @color-disabled;
+  border-bottom: 1px solid @color-disabled;
+}
+
+.el-table__fixed-right::before, .el-table__fixed::before {
+  background: @color-transparent;
+}
+
+.el-table--border th, .el-table--border td {
+  border-right: 1px solid @color-darker-bg;
+}
+
+.el-table--border th {
+  border-bottom: 1px solid @color-darker-bg;
+}
+
+.el-table thead.is-group th {
+  background: @color-card-bg
+}
+
+.el-switch__core .el-switch__button {
+  background: @color-111;
+}
+
+.el-switch__core {
+  background: @color-11;
+  border: 1px solid @color-disabled;
+}
+
+.el-input-group__prepend {
+  background: @color-transparent;
+  border: 1px solid @color-disabled;
+  border-right: @color-transparent;
+}
+
+.el-input__inner {
+  background: @color-11;
+  border: 1px solid @color-disabled;
+  color: @color-111;
+}
+
+.el-input.is-disabled .el-input__inner {
+  background: @color-disabled;
+  border-color: @color-disabled;
+  color: @color-000;
+}
+
+.el-select-dropdown__item {
+  font-size: 12px;
+  color: @color-111;
+}
+
+.el-select-dropdown__empty {
+  color: @color-000;
+  font-size: 12px
+}
+
+.el-select-dropdown {
+  border: 1px solid @color-1;
+  background: @color-13;
+}
+
+.el-select-dropdown__item.hover,
+.el-select-dropdown__item:hover,
+.el-select-dropdown__item.selected.hover,
+.el-select-dropdown__item.selected {
+  background: @color-4;
+}
+
+.el-picker-panel {
+  color: @color-111;
+  border: 1px solid rgba(240, 240, 240, .12);
+
+}
+
+.el-picker-panel__shortcut {
+  background: transparent;
+  color: @color-111;
+}
+
+.el-picker-panel__shortcut:hover {
+  background: @color-hover-bg
+}
+
+.el-picker-panel__shortcut.active {
+  background: @color-hover-bg;
+  color: @color-primary
+}
+
+.el-picker-panel [slot=sidebar], .el-picker-panel__sidebar {
+  background: @color-darker-bg;
+  border-right: 1px solid @color-disabled;
+}
+
+.el-picker-panel__footer {
+  border-top: 1px solid @color-002;
+  background: @color-003;
+}
+
+.el-date-table th {
+  border-bottom: solid 1px @color-002;
+}
+
+.el-date-range-picker__time-header {
+  border-bottom: 1px solid @color-002;
+}
+
+.el-date-range-picker__content.is-left {
+  border-right: 1px solid @color-002;
+}
+
+.el-date-table td.available:hover {
+  background: @color-hover-bg
+}
+
+.el-date-table td.in-range {
+  background: @color-hover-bg
+}
+
+.el-date-table td.in-range:hover {
+  background: @color-hover-bg
+}
+
+.el-date-table th {
+  color: @color-111;
+}
+
+.el-date-table td.next-month, .el-date-table td.prev-month {
+  color: @color-disabled
+}
+
+.el-message-box__title {
+  color: @color-004
+}
+
+.el-tree {
+  background-color: @color-card-bg;
+  border: 1px solid rgba(240, 240, 240, .12);
+  color: @color-111;
+}
+
+.el-tree-node__loading-icon {
+  color: @color-000
+}
+
+.el-radio__inner {
+  border: 1px solid rgba(240, 240, 240, .12);
+
+}
+
+.el-checkbox {
+  color: @color-111
+}
+
+.el-checkbox__inner {
+  background: @color-111;
+}
+
+.el-date-editor .el-range-input {
+  color: @color-111;
+  background: transparent;
+}
+
+.el-date-editor .el-range-separator {
+  color: @color-000;
+}
+
+.el-date-table td.in-range div {
+  background: @color-11;
+}
+
+.el-date-table td.in-range {
+  background: @color-10;
+}
+
+.el-popover {
+  background: @color-darker-bg;
+}
+
+.el-popper[x-placement^="top"] .popper__arrow::after {
+  border-top-color: @color-input-inner;
+}
+
+.el-popper[x-placement^="top"] .popper__arrow {
+  border-top-color: @color-002;
+}
+
+.el-button.is-disabled, .el-button.is-disabled:focus, .el-button.is-disabled:hover {
+  color: #fff;
+  background: @color-disabled;
+  border-color: rgba(240, 240, 240, .12)
+}
+
+.el-button-group .el-button--primary:first-child {
+  border-right-color: rgba(240, 240, 240, .12)
+}
+
+.el-button-group .el-button--primary:last-child {
+  border-left-color: rgba(240, 240, 240, .12)
+}
+
+.el-button-group .el-button--danger:last-child {
+  border-left-color: rgba(240, 240, 240, .12)
+}
+
+.el-button-group .el-button--primary:not(:first-child):not(:last-child) {
+  border-left-color: rgba(240, 240, 240, .12);
+  border-right-color: rgba(240, 240, 240, .12)
+}
+
+.el-message-box {
+  background: @color-card-bg;
+  border: 0;
+}
+
+.el-message-box__title {
+  color: #fff
+}
+
+.el-message-box__content {
+  color: #fff;
+}
+
+.el-message-box__close:hover {
+  color: #d9534f
+}
+
+.el-loading-mask {
+  background: @color-darker-bg;
+}
+
+.el-dropdown {
+  color: #fff;
+}
+
+.el-card, .el-dropdown-menu__item--divided:before {
+  background: @color-card-bg;
+}
+
+.el-card {
+  border: 0 solid hsla(0, 0%, 94%, .12);
+  box-shadow: 0 2px 4px 0 @color-005, 0 0 6px 0 @color-006;
+  color: #fff;
+}
+
+.el-card:hover {
+  box-shadow: 0 10px 30px @color-darker-bg;
+}
+
+.el-card__header {
+  border-bottom: 1px solid @color-002;
+}
+
+.el-card .card-header {
+  color: #fff;
+}
+
+.el-step__head.is-text.is-wait {
+  color: @color-disabled;
+  background: @color-hover-bg;
+  border: 1px solid rgba(240, 240, 240, .12)
+}
+
+.el-breadcrumb__inner, .el-breadcrumb__inner a,
+.el-breadcrumb__item__inner, .el-breadcrumb__item__inner a,
+.el-breadcrumb__item__inner a:hover, .el-breadcrumb__item__inner:hover {
+  color: @color-000;
+}
+
+.el-breadcrumb__item:last-child .el-breadcrumb__inner,
+.el-breadcrumb__item:last-child .el-breadcrumb__inner:hover,
+.el-breadcrumb__item:last-child .el-breadcrumb__inner a,
+.el-breadcrumb__item:last-child .el-breadcrumb__inner a:hover {
+  color: @color-000;
+}
+
+.el-tooltip__popper.is-dark {
+  background: #081138;
+  color: #fff;
+}
+
+.el-badge__content {
+  border: 1px solid transparent;
+}
+
+//add by roger
+.n-color-danger {
+  color: @color-red;
+}
+
+.n-color-warn {
+  color: @color-orange;
+}
+
+.n-color-success {
+  color: @color-green;
+}
+
+.n-color-primary {
+  color: @color-blue;
+}
+
+.n-color-normal {
+  color: @color-white;
+}
+
+//评分
+.n-safe-status {
+  color: @color-light-gray;
+  .n-score {
+    color: @color-orange;
+  }
+
+}
+
+//实时告警数量
+.n-alarm-num {
+  .el-card__body {
+    color: @color-light-gray;
+  }
+  .n-alarm-num-number {
+    color: @color-red;
+  }
+  .n-alarm-num-yesterday-number {
+    color: @color-orange;
+  }
+}
+
+//实时告警
+.n-realtime-alarm {
+  color: @color-light-gray;
+  .n-realtime-alarm-sign-tv {
+    i {
+      text-shadow: 2px 2px 5px #ff322a;
+    }
+  }
+  .n-realtime-alarm-sign-user {
+    color: @color-blue;
+  }
+
+}
+
+//事件源
+.event-src-progress {
+  .el-card__body {
+    color: @color-light-gray;
+  }
+  .el-progress__text {
+    color: darken(@color-white, 15);
+  }
+
+}
+
+.unit-alarm {
+  .el-card__body {
+    color: @color-light-gray;
+  }
+  .unit-alarm-unit {
+    color: @color-orange;
+  }
+  .unit-alarm-score {
+    color: @color-blue;
+  }
+}
+
+//告警数量卡片
+.number-card {
+  .number-card-title {
+    color: darken(@color-white, 10);
+  }
+  .number-card-body {
+    color: @color-orange;
+  }
+
+}
+
+.el-table__empty-block {
+  background: @color-darker-bg;
+}
+
+.el-cascader-menu {
+  color: white;
+  background: @color-deep-bg;
+}
+
+.el-cascader-menus {
+  border: solid 1px #38496a;
+}
+
+.el-cascader-menu__item {
+  color: white;
+}
+
+.el-cascader__label {
+  color: @color-white;
+  span {
+    color: @color-white;
+  }
+}
+
+.el-cascader-menu__item:hover, .el-cascader-menu__item:focus:not(:active) {
+  background: #03407e;
+}
+
+//危险主机
+.safe-rate {
+  .safe-rate-table {
+    color: @color-light-gray;
+  }
+  .el-table__empty-block {
+    background: @color-card-bg;
+  }
+
+}
+
+.safe-rate-tooltips-item-name {
+  color: lightgrey;
+}
+
+.safe-rate-tooltips-item-value {
+  color: lightgrey;
+}
+
+//处置情况
+.deal-pie {
+  .deal-pie-num {
+    color: @color-orange;;
+  }
+}
+
+//密钥监测
+.n-key-monitor-head {
+  color: @color-light-gray;
+}
+
+.n-key-monitor-col {
+  color: @color-light-gray;
+
+  .n-key-monitor-real {
+    color: @color-orange;
+  }
+
+}
+
+.n-key-monitor-search:hover {
+  background: #263238;
+}
+
+.n-key-monito-crosshairs {
+  color: #1ed280;
+}
+
+//时间轴
+.ty-timeline {
+
+  li:nth-of-type(even) .ty-timeline-item-head {
+    background: @color-green;
+  }
+  li:nth-of-type(odd) .ty-timeline-item-head {
+    background: @color-red;
+  }
+
+  .ty-timeline-item {
+    .ty-timeline-item-tail {
+      border-left: 1px solid hsla(0, 0%, 94%, .2);;
+    }
+
+    .ty-timeline-item-head {
+      border: 1px solid transparent;
+    }
+    .ty-timeline-item-content {
+      color: @color-light-gray;
+      .type {
+        color: @color-orange;
+      }
+      .deal {
+        color: @color-text-blue;
+        border-bottom: 1px solid @color-text-blue;
+      }
+
+    }
+  }
+  //已读
+  .ty-timeline-item.read {
+    .ty-timeline-item-head {
+      background: @color-gray;
+    }
+    .ty-timeline-item-content {
+      color: @color-gray;
+      .type {
+        color: @color-gray;
+      }
+      .deal {
+        color: @color-gray;
+        border-bottom: 1px solid @color-gray;
+      }
+
+    }
+  }
+}
+
+//排名
+.topx-line {
+  .topx-line-item {
+    .topx-line-item-content {
+      color: @color-light-gray;
+    }
+    .topx-line-progress-container {
+      background: @color-gray;
+    }
+  }
+}
+
+//排名-select
+.topx-line-select {
+  .el-input__inner {
+    background: @color-card-bg;
+  }
+
+}
+
+.el-submenu__title i {
+  color: #fff !important;
+}
+
+.el-submenu__title i:hover {
+  color: #1CC4F7 !important;
+
+}
+
+.el-card {
+  border: 1px solid rgba(72, 185, 244, .5) !important;
+  box-shadow: inset 0 0 25px rgba(26, 71, 119, 1) !important;
+}
+
+.com-handle-bar,
+.com-table-handle-bar {
+  background: @color-4;
+  border: 1px solid @color-3;
+}
+
+.com-tree-handle-bar {
+  background-color: @color-15;
+  border: 1px solid @color-2;
+  color: rgb(255, 255, 255);
+  box-shadow: inset 0 0 20px @color-14;
+}
+
+.el-table__body-wrapper.is-scrolling-none::-webkit-scrollbar-thumb,
+.el-transfer-panel__list.is-filterable::-webkit-scrollbar-thumb,
+.el-tabs .el-tabs__content .el-table::-webkit-scrollbar-thumb,
+.el-tabs .el-tabs .el-tabs__content .el-table::-webkit-scrollbar-thumb,
+.el-tabs__content::-webkit-scrollbar-thumb,
+.com-second-card .el-tabs__content::-webkit-scrollbar-thumb,
+.fc-scroller::-webkit-scrollbar-thumb,
+.el-textarea__inner::-webkit-scrollbar-thumb,
+.com-scrollbar::-webkit-scrollbar-thumb {
+  background: @color-3;
+}
+
+//日历
+.el-picker-panel {
+  background: @color-15;
+}
+
+.el-date-picker__time-header {
+  border-bottom: 1px solid @color-7;
+}
+
+.el-date-picker__header-label {
+  color: @color-111;
+}
+
+.el-date-table td.next-month, .el-date-table td.prev-month {
+  color: @color-000;
+}
+
+.el-picker-panel__footer {
+  border-top: 1px solid @color-7;
+  background: @color-4;
+}
+
+.el-date-table th {
+  border-bottom: solid 1px @color-7;
+}
+
+.el-time-panel {
+  border: solid 1px @color-7;
+  background-color: @color-4;
+}
+
+.el-time-spinner__item {
+  color: @color-111;
+}
+
+.el-time-spinner__item.active:not(.disabled) {
+  color: @color-1;
+}
+
+.el-time-panel__btn {
+  color: @color-111;
+}
+
+.el-time-panel__footer {
+  border-top: 1px solid @color-7;
+}
+
+.el-time-spinner__item:hover:not(.disabled):not(.active) {
+  background: @color-3;
+  cursor: pointer;
+}
+
+//分页
+.el-pagination__sizes .el-input .el-input__inner {
+  background: @color-11;
+  color: @color-111;
+  border: 1px solid @color-disabled;
+}
+
+.el-pager li {
+  border: 1px solid @color-disabled;
+  background: @color-11;
+  color: @color-111;
+}
+
+.el-pager li:hover {
+  color: @color-111;
+  background: @color-4;
+}
+
+.el-pager li.active {
+  background: @color-4;
+}
+
+.el-pager li:last-child {
+  border-right: 1px solid @color-disabled;
+}
+
+.el-pagination .btn-next, .el-pagination .btn-prev {
+  background: center center no-repeat @color-11;
+  border: 1px solid @color-disabled;
+  color: @color-111;
+}
+
+.el-pagination .btn-next:hover, .el-pagination .btn-prev:hover {
+  background: center center no-repeat @color-11;
+}
+
+.el-pagination button.disabled {
+  color: #e4e4e4;
+  background: @color-disabled;
+}
+
+.el-pagination__editor {
+  color: @color-111
+}
+
+.el-pagination__sizes .el-input .el-input__inner {
+  background: @color-4;
+}
+
+.el-pagination .btn-next, .dark-theme .el-pagination .btn-prev {
+  background: center center no-repeat @color-4;
+}
+
+.el-pagination__jump .el-input__inner {
+  border: 1px solid @color-6;
+}
+
+.fc-unthemed th, .fc-unthemed td,
+.fc-unthemed thead, .fc-unthemed tbody,
+.fc-unthemed .fc-divider, .fc-unthemed .fc-row,
+.fc-unthemed .fc-content, .fc-unthemed .fc-popover,
+.fc-unthemed .fc-list-view, .fc-unthemed .fc-list-heading td {
+  border: 1px solid @color-1 !important;
+}
+
+.fc-nonbusiness {
+  background: @color-1 !important;
+}
+
+.fc-unthemed td.fc-today {
+  background: @color-16 !important;
+}
+
+.el-collapse-item__wrap {
+  background-color: @color-transparent;
+  border-bottom: 1px solid @color-1;
+}
+
+.el-collapse-item__content {
+  background: @color-6;
+}
+
+.el-collapse-item__header {
+  border-bottom: 1px solid @color-1;
+  background-color: @color-4;
+}
+
+.el-input__inner,
+.el-radio.is-bordered,
+.el-textarea__inner,
+.el-checkbox.is-bordered {
+  color: @color-111;
+  border: 1px solid @color-1;
+  background: @color-13;
+}
+
+.el-textarea.is-disabled .el-textarea__inner,
+.el-radio.is-disabled.is-bordered,
+.el-checkbox.is-disabled.is-bordered {
+  background: @color-disabled;
+  border-color: @color-disabled;
+  color: @color-000;
+}
+
+.el-menu-item span {
+  color: @color-111;
+}
+
+.el-checkbox-button__inner,
+.el-button--default,
+.el-button,
+.fc-button,
+.fc .fc-button-group button,
+.el-radio-button .el-radio-button__inner {
+  color: @color-111 !important;
+  border-color: @color-transparent !important;
+  background-size: 100% 100% !important;
+}
+
+.el-checkbox-button__inner:hover, .el-checkbox-button__inner:focus,
+.el-radio-button .el-radio-button__inner:hover, .el-radio-button .el-radio-button__inner:focus,
+.el-button--default:hover, .el-button--default:focus {
+  color: @color-1;
+  border-color: @color-transparent;
+  background-size: 100% 100%;
+}
+
+.el-button--primary,
+.el-checkbox-button.is-checked span.el-checkbox-button__inner,
+.el-radio-button.is-active span.el-radio-button__inner {
+  color: @color-111;
+  border-color: @color-transparent !important;
+  background-size: 100% 100% !important;
+}
+
+.el-button--primary:hover, .el-button--primary:focus,
+.el-radio-button.is-active .el-radio-button__inner:hover,
+.el-radio-button.is-active .el-radio-button__inner:focus,
+.el-checkbox-button.is-checked span.el-checkbox-button__inner {
+  border-color: @color-transparent;
+  background-size: 100% 100% !important;
+}
+
+.el-table {
+  border: 1px solid @color-2;
+}
+
+.el-table__header,
+.el-table th {
+  background: @color-3;
+}
+
+.el-table th > .cell.highlight {
+  color: #fff;
+}
+
+.el-transfer-panel .el-transfer-panel__header .el-checkbox .el-checkbox__label span {
+  color: #ddd;
+}
+
+.el-checkbox__inner {
+  background: @color-7;
+}
+
+.el-checkbox__inner {
+  border: 1px solid @color-11;
+}
+
+.el-tree-node {
+  &:focus {
+    .el-tree-node__content {
+      background: @color-4
+    }
+  }
+  .el-tree-node__content {
+    &:hover {
+      background: @color-4
+    }
+  }
+}
+
+.el-tree-node.is-current > .el-tree-node__content {
+  background: @color-4 !important;
+}
+
+.el-tree-node__content:hover {
+  background: @color-4 !important;
+}
+
+.col-border-style {
+  border: 1px solid @color-1;
+}
+
+.el-message-box {
+  background: @color-4;
+  border: 0;
+}
+
+.el-table--enable-row-hover .el-table__body tr:hover > td {
+  background: @color-7;
+}
+
+.el-table-filter {
+  border: solid 1px @color-3;
+  background: @color-4;
+  box-shadow: 0 2px 12px 0 @color-6;
+}
+
+.el-table-filter__bottom {
+  border-top: 1px solid @color-1;
+}
+
+.el-table-filter__bottom button {
+  color: @color-111;
+}
+
+.el-transfer-panel {
+  border: 0;
+  background: @color-4;
+}
+
+.el-transfer-panel .el-transfer-panel__header {
+  background: @color-3;
+  color: @color-111;
+}
+
+.el-transfer-panel .el-transfer-panel__item:hover {
+  background: @color-6;
+}
+
+.el-transfer-panel .el-transfer-panel__header .el-checkbox .el-checkbox__label {
+  color: @color-111;
+}
+
+.el-button--primary,
+.el-checkbox-button.is-checked span.el-checkbox-button__inner,
+.el-radio-button.is-active .el-radio-button__inner {
+  color: @color-111;
+  border-color: @color-transparent !important;
+  background-size: 100% 100% !important;
+}
+
+.el-button--primary:hover, .el-button--primary:focus,
+.el-radio-button.is-active .el-radio-button__inner:hover,
+.el-radio-button.is-active .el-radio-button__inner:focus,
+.el-checkbox-button.is-checked span.el-checkbox-button__inner {
+  border-color: @color-transparent;
+  background-size: 100% 100% !important;
+}
+
+.el-cascader-menu {
+  color: @color-111;
+  background: @color-13;
+}
+
+.el-cascader-menu {
+  border-right: solid 1px @color-6;
+
+}
+
+.el-switch__label {
+  color: @color-000;
+}
+
+.el-tree {
+  background-color: @color-13;
+  border: 1px solid @color-disabled;
+  color: @color-111;
+}
+
+.el-input-number__increase, .el-input-number__decrease {
+  background: @color-6;
+  color: @color-111;
+}
+
+.el-radio-button__orig-radio:checked + .el-radio-button__inner {
+  background-color: @color-transparent;
+  border-color: @color-transparent;
+}
+
+.el-card__header {
+  border-bottom: 1px solid @color-11 !important;
+  background: @color-6 !important;
+  box-shadow: inset 0 0 17px @color-7;
+}
+
+.el-progress__text {
+  color: @color-111;
+}
+
+.el-input-group__append .el-button {
+  background: @color-transparent !important;
+  color: @color-1 !important;
+}
+
+.com-button-custom,
+.fc-toolbar.fc-header-toolbar .fc-button,
+.el-picker-panel__link-btn {
+  box-shadow: inset 0 0 20px @color-17 !important;
+  background: @color-transparent !important;
+  border: 1px solid @color-8 !important;
+}
+
+.fc-toolbar.fc-header-toolbar .fc-button:hover,
+.fc-toolbar.fc-header-toolbar .fc-button:focus,
+.com-button-custom:hover,
+.com-button-custom:focus,
+.el-picker-panel__link-btn:hover,
+.el-picker-panel__link-btn:focus {
+  box-shadow: inset 0 0 10px @color-17 !important;
+  background: @color-transparent !important;
+  border: 1px solid @color-8 !important;
+  border-radius: 0 !important;
+}
+
+.com-button-group .el-button,
+.com-button-group .el-checkbox-button__inner,
+.com-button-group .el-radio-button__inner {
+  box-shadow: inset 0 0 20px @color-17 !important;
+  background: @color-transparent !important;
+  border: 1px solid @color-8 !important;
+}
+
+.com-button-group .el-button:hover,
+.com-button-group .el-button:focus,
+.com-button-group .el-checkbox-button__inner:hover,
+.com-button-group .el-checkbox-button__inner:focus,
+.com-button-group .el-radio-button__inner:hover,
+.com-button-group .el-radio-button__inner:focus {
+  box-shadow: inset 0 0 10px @color-17 !important;
+  background: @color-transparent !important;
+  border: 1px solid @color-8 !important;
+}
+
+.com-button-group .el-checkbox-button.is-checked span.el-checkbox-button__inner,
+.com-button-group .el-radio-button.is-active span.el-radio-button__inner {
+  box-shadow: inset 0 0 20px @color-17 !important;
+  border: 1px solid @color-8 !important;
+  background: @color-17 !important;
+}
+
+//todo dialog  ---------------------------------
+.el-dialog {
+  border-bottom: 1px solid @color-1;
+  background-size: 100% 100%;
+}
+
+.el-dialog__body {
+  border-bottom: 1px solid @color-1;
+  background-size: 100% 100%;
+
+}
+
+.el-dialog__close:hover {
+  color: @color-1;
+}
+
+//todo tabs ------------------------------------
+.el-tabs__item {
+  color: @color-000;
+  &:hover {
+    color: @color-111;
+  }
+  &.is-active {
+    color: @color-111;
+  }
+}
+
+.el-tabs__active-bar {
+  background: @color-14;
+}
+
+.el-tabs--border-card > .el-tabs__header {
+  background: @color-transparent;
+  border-bottom: 1px solid @color-transparent;
+}
+
+.el-tabs--border-card > .el-tabs__content {
+  background: @color-transparent;
+}
+
+.el-tabs--border-card > .el-tabs__header .el-tabs__item {
+  border: 1px solid @color-transparent;
+  color: @color-disabled;
+  background: @color-transparent;
+}
+
+.el-tabs--border-card > .el-tabs__header .el-tabs__item:hover {
+  color: @color-111;
+}
+
+.el-tabs--border-card > .el-tabs__header .el-tabs__item.is-active {
+  color: @color-111;
+  background: @color-transparent;
+  border-right: 1px solid @color-disabled;
+  border-left: 1px solid @color-disabled;
+  border-bottom: 2px solid @color-disabled;
+  border-top: 2px solid @color-disabled;
+}
+
+.el-tabs--border-card > .el-tabs__header .el-tabs__item.is-active:first-child {
+  border-left-color: @color-disabled;
+}
+
+.el-tabs--border-card > .el-tabs__header .el-tabs__item.is-active:last-child {
+  border-right-color: @color-disabled;
+}
+
+.el-tabs__nav-wrap::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  z-index: 1;
+}
+
+.el-tabs.el-tabs--top.el-tabs--border-card {
+  width: 99%;
+  border: 0;
+  background-size: 100% 100%;
+  border-bottom: 1px solid @color-2;
+}
+
+.el-tabs--border-card > .el-tabs__header {
+  background: @color-transparent;
+  border-bottom: 0;
+}
+
+.el-tabs--border-card > .el-tabs__header .el-tabs__item {
+  border: 1px solid @color-1;
+  border-bottom: 2px solid @color-1;
+  border-top: 2px solid @color-1;
+  background: @color-transparent;
+  color: @color-000;
+}
+
+.el-tabs--border-card > .el-tabs__header .el-tabs__item.is-active {
+  border: 1px solid @color-1;
+  border-bottom: 2px solid @color-1;
+  border-top: 2px solid @color-1;
+  box-shadow: inset 0 0 24px @color-1;
+  background: @color-transparent;
+}
+
+.el-tabs--card > .el-tabs__header .el-tabs__item.is-active {
+  border-bottom-color: @color-1;
+}
+
+.el-tabs--card > .el-tabs__header {
+  border-bottom: 1px solid @color-1;
+}
+
+.el-tabs--card > .el-tabs__header .el-tabs__nav {
+  border: 1px solid @color-7;
+}
+
+.el-tabs .el-tabs {
+  background: @color-13 no-repeat;
+}
+
+.el-icon-arrow-right:before {
+  content: "\E604";
+  color: #4aabf3;
+}
+
+.el-transfer-panel .el-transfer-panel__header {
+  border-bottom: 1px solid #020d20;
+}
+
+.com-text-g {
+  color: #7ae27a;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.com-text-y {
+  color: #fcd364;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.com-text-r {
+  color: #f60404;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.com-bg-red {
+  color: #f60404;
+  font-size: 14px;
+  font-weight: 600;
+  //animation: bg1 1s infinite linear;
+}
+
+.com-bg-yellow {
+  color: #fcac5a;
+  font-size: 14px;
+  font-weight: 600;
+  //animation: bg2 1s infinite linear;
+}
+
+.com-bg-lightyellow {
+  color: #fcea61;
+  font-size: 14px;
+  font-weight: 600;
+  //animation: bg3 1s 0s infinite linear;
+}
+
+.com-bg-green {
+  color: #7ae27a;;
+  font-size: 14px;
+  font-weight: 600;
+  //animation: bg3 1s 0s infinite linear;
+}
+
+@keyframes bg1 {
+  0% {
+    background: radial-gradient(rgba(249, 29, 11, .3), rgba(249, 29, 11, .1));
+    background: -webkit-radial-gradient(rgba(249, 29, 11, .3), rgba(249, 29, 11, .1));
+    background: -moz-radial-gradient(rgba(249, 29, 11, .3), rgba(249, 29, 11, .1));
+  }
+  100% {
+    background: radial-gradient(rgba(249, 29, 11, .1), rgba(249, 29, 11, .3));
+    background: -webkit-radial-gradient(rgba(249, 29, 11, .1), rgba(249, 29, 11, .3));
+    background: -moz-radial-gradient(rgba(249, 29, 11, .1), rgba(249, 29, 11, .3));
+  }
+}
+
+@keyframes bg2 {
+  0% {
+    background: radial-gradient(rgba(244, 159, 32, .4), rgba(244, 159, 32, .1));
+    background: -webkit-radial-gradient(rgba(244, 159, 32, .4), rgba(244, 159, 32, .1));
+    background: -moz-radial-gradient(rgba(244, 159, 32, .4), rgba(244, 159, 32, .1));
+  }
+  100% {
+    background: radial-gradient(rgba(244, 159, 32, .1), rgba(244, 159, 32, .4));
+    background: -webkit-radial-gradient(rgba(244, 159, 32, .1), rgba(244, 159, 32, .4));
+    background: -moz-radial-gradient(rgba(244, 159, 32, .1), rgba(244, 159, 32, .4));
+  }
+}
+
+@keyframes bg3 {
+  0% {
+    background: radial-gradient(rgba(239, 204, 158, 0.3), rgba(239, 204, 158, .1));
+    background: -webkit-radial-gradient(rgba(239, 204, 158, .3), rgba(239, 204, 158, .1));
+    background: -moz-radial-gradient(rgba(239, 204, 158, .3), rgba(239, 204, 158, .1));
+  }
+  100% {
+    background: radial-gradient(rgba(239, 204, 158, .1), rgba(239, 204, 158, .3));
+    background: -webkit-radial-gradient(rgba(239, 204, 158, .1), rgba(239, 204, 158, .3));
+    background: -moz-radial-gradient(rgba(239, 204, 158, .1), rgba(239, 204, 158, .3));
+  }
+}
+

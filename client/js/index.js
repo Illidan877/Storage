@@ -1,5 +1,4 @@
 window.typedict = {}
-
 var create_menu = function (arr, pid = 0) {
     for (var a = 0; a < arr.length; a++) {
         if (arr[a].children) {
@@ -27,7 +26,7 @@ var create_menu = function (arr, pid = 0) {
 }
 var show_menu = function () {
     $.ajax({
-        url: 'http://127.0.0.1:8000/v1/base_dict/jurisdiction?type=1',
+        url: PATHURL + '/v1/base_dict/jurisdiction?type=1',
         type: 'get',
         dataType: "json",
         contentType: "application/json;charset=utf-8",
@@ -62,7 +61,13 @@ var click_menu = function (pid) {
         `)
     }
     $('#page_nav').html(temp.join(''))
-    $('.content ').attr('src', 'pages/' + typedict[pid][0].link + typedict[pid][0].id)
+    let url = ""
+    if (typedict[pid][0].link.indexOf('?') == -1) {
+        url = 'pages/' + typedict[pid][0].link
+    } else {
+        url = 'pages/' + typedict[pid][0].link + typedict[pid][0].id
+    }
+    $('.content ').attr('src', url)
 }
 var listtoTree = function (arr) {
     var parent = []
@@ -99,7 +104,7 @@ var listtoTree = function (arr) {
 $(function () {
     $('.content').css('height', $('.content-wrapper').height() - 59 + 'px')
     show_menu()
-    click_menu(1)
+    click_menu(7)
 
 });
 

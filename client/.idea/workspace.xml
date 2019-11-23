@@ -2,87 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db9c1ccc-9979-4175-b28a-668086b647ee" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/client.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/home.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/home1.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blank.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cards.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/charts.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/sb-admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/sb-admin.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/wwn.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/wwn.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forgot-password.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/goods.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gulpfile.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/navbar.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/111111.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/AvailableStock.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/WarehouseManagement.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/accountStatement.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/commoditiesList.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/dictConClass.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/dictConType.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/freightList.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/goodsInStockg.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/home.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/purchaseOrder.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/reportManagement.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/supplierManagement.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/users.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/warehouseReceipt.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/register.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tables copy.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tables.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../server/storage/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/commodity/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/commodity/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/commodity/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/commodity/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/commodity/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/commodity/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/commodity/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/commodity/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/common/LinqHelper.py" beforeDir="false" afterPath="$PROJECT_DIR$/../server/storage/common/LinqHelper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/common/TokenMiddleware.py" beforeDir="false" afterPath="$PROJECT_DIR$/../server/storage/common/TokenMiddleware.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/dict_con/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/dict_con/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/dict_con/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/dict_con/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/dict_con/migrations/0002_auto_20191108_1952.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/dict_con/migrations/0003_remove_baseclass_updated_time.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/dict_con/migrations/0004_auto_20191108_2013.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/dict_con/migrations/0005_auto_20191111_1708.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/dict_con/migrations/0006_testdemo.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/dict_con/migrations/0007_auto_20191112_1926.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/dict_con/migrations/0008_provider.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/dict_con/migrations/0009_auto_20191112_1945.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/dict_con/migrations/0010_auto_20191115_2025.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/dict_con/migrations/0011_auto_20191115_2102.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/dict_con/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/dict_con/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/dict_con/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/dict_con/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/dict_con/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/logs/all-2019-11-16.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/logs/all-2019-11-18.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/logs/error-2019-11-16.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/logs/error-2019-11-18.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/logs/info-2019-11-16.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/logs/info-2019-11-18.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/Jurisdiction.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/Jurisdiction.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/part.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/part.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/template-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/template-page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/storage/logs/all-2019-11-23.log" beforeDir="false" afterPath="$PROJECT_DIR$/../server/storage/logs/all-2019-11-23.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../server/storage/storage/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../server/storage/storage/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/storage/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../server/storage/storage/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/users/111.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/users/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/users/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/users/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/users/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/users/migrations/0002_auto_20191116_1955.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/users/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/users/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/users/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/users/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/storage/users/views.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -97,13 +26,19 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../server/storage" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/pages" />
+      <recent name="$PROJECT_DIR$/js" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -129,7 +64,8 @@
       <updated>1574320879546</updated>
       <workItem from="1574320881464" duration="17336000" />
       <workItem from="1574351441298" duration="10358000" />
-      <workItem from="1574399026945" duration="32261000" />
+      <workItem from="1574399026945" duration="33131000" />
+      <workItem from="1574480447138" duration="5010000" />
     </task>
     <servers />
   </component>
@@ -154,8 +90,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/pages/template-page.html</url>
-          <line>136</line>
-          <properties lambdaOrdinal="-1" />
+          <line>137</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
